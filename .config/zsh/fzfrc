@@ -1,0 +1,170 @@
+#!/bin/zsh
+
+#-----------------------------------------------------------------------------#
+# File:     ~/.config/zsh/fzfrc  (archlinux - 'silent')
+# Date:     Thu 14 Oct 2021 17:10
+# Update:   Tue 05 Aug 2025 09:57
+# Owner:    fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
+#-----------------------------------------------------------------------------#
+
+#---------- fzfrc ------------------------------------------------------------#
+
+# some cool fzf functions thnx to Jitesh voidstarsh - https://github.com/voidstarsh
+
+# don't source this file if fzf is not installed
+command -v fzf >/dev/null 2>&1 || return 0
+
+# {{{ options
+
+# default fzf options
+export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --style minimal -m --color bg:-1,preview-bg:-1,info:2 --height '75%' --margin=1,0,0,4 --reverse --info=inline --color=info:-1,prompt:-1,pointer:-1,marker:-1,spinner:-1,header:-1,hl:yellow,hl+:yellow"
+# vi like navigation with J/K
+export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --bind 'J:down,K:up,Q:cancel'"
+
+### fzf defaults
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview 'bat --style=plain --theme=base16 --color=always --line-range :100 {}'"
+export FZF_ALT_C_COMMAND='fd --type d . --color=never --hidden'
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
+
+# use ** as the trigger sequence
+export FZF_COMPLETION_TRIGGER='**'
+
+# completion options to fzf command
+export FZF_COMPLETION_OPTS='--no-border --info=inline'
+
+# }}}
+
+# {{{ fzf functions
+
+alias clipbd="wl-copy -r -selection clipboard"
+alias devar="unset var"
+
+# fcd - fcdl [cdl fuzzy]: cd & lsa from $HOME
+fcdl() {
+    [ -n "$1" ] && cd "$1" 2>/dev/null && return 0
+    if command -v fd >/dev/null; then
+        var="$(fd -d5 -td --follow --exclude '*/\.*' 2>/dev/null | fzf --prompt "cdl: ")"
+    else
+        var="$(find -L "$HOME" -maxdepth 5 -type d -not -path '*/\.*'
+        2>/dev/null | fzf --prompt "cdl: ")"
+    fi
+    [ -n "$var" ] && cdl "$var" 2>/dev/null
+    devar; return 0
+}
+
+# fch - fcdlh [cdl fuzzy hidden]: cd & lsa from $HOME including hidden
+fcdlh() {
+    [ -n "$1" ] && cd "$1" 2>/dev/null && return 0
+    if command -v fd >/dev/null; then
+        var="$(fd -d5 -td --follow --hidden --exclude '\.git*' 2>/dev/null | fzf --prompt "cdl: ")"
+    else
+        var="$(find -L "$HOME" -maxdepth 5 -type d -not -path '*/\.git*' 2>/dev/null | fzf --prompt "cdl: ")"
+    fi
+    [ -n "$var" ] && cdl "$var" 2>/dev/null
+    devar; return 0
+}
+
+# fv - vif [vi fuzzy]: open a file in $EDITOR
+vif() {
+    [ -n "$1" ] && "$EDITOR" "$1" && return 0
+    var="$(fzf --prompt "edit: ")"
+    [ -n "$var" ] && "$EDITOR" "$var"
+    devar; return 0
+}
+
+# fo - fopen open a file with xdg-open
+fopen() {
+    fd -t f -H -I --exclude '\.git*' | fzf -m --preview="xdg-mime query filetype {}" | xargs -ro -d "\n" xdg-open 2>&-
+}
+
+# fh - hst [history]: search command line history & copy selected
+hst() {
+    var="$(history | cut -c8- | fzf --multi --tac --prompt "history: ")"
+    [ -n "$var" ] && echo "$var" | clipbd
+    devar; return 0
+}
+
+# fhx - find command from history and execute
+function fhx() {
+  eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac --prompt "history: " | sed 's/ *[0-9]* *//')
+}
+
+# fk - fkill - kill processes - list only the ones you can kill - alias: fk
+fkill() {
+	local pid
+	if [ "$UID" != "0" ]; then
+		pid=$(ps -f -u $UID | sed 1d | fzf -m --prompt "kill: " | awk '{print $2}')
+	else
+		pid=$(ps -ef | sed 1d | fzf -m --prompt "kill: " | awk '{print $2}')
+	fi
+	if [ "x$pid" != "x" ]
+	then
+		echo $pid | xargs kill -${1:-9}
+	fi
+}
+
+# ff - find given string in files, open in nvim and go to 1st search result
+fif() {
+	if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
+	rg --hidden --ignore-case --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 6 '$1' || rg --ignore-case --pretty --context 6 '$1' {}" --preview-window=right:50% --multi --select-1 --exit-0
+}
+# takes a query to grep
+fifo() {
+    if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
+	local file
+	file=$(fif $1)
+	if [[ -n $file ]]
+	then
+		nvim $file -c /$1 -c 'norm! n zz'
+	fi
+}
+
+# fp - fzf preview
+fprev() {
+    fzf --preview "bat --style=plain --theme=base16 --color=always --line-range :100 {}" --preview-window "right:50%"
+}
+
+# fe - fzf execute pac_installed program
+fexec() {
+    $(bat $HOME/Notes/pac_installed.md | fzf --prompt "exec: ")
+}
+
+# }}}
+
+# {{{ pacman and paru functions
+
+# i use arch btw
+if [ -f "/etc/arch-release" ]; then
+# pacl - pacls [pacman list]: list all installed packages
+pacls() {
+    var="$(pacman -Qq | fzf --height "80%" --multi --preview "pacman -Si {1}" --preview-window "right:50%" --prompt "pkg: ")"
+    [ -n "$var" ] && echo "$var" | clipbd
+    devar; return 0
+}
+
+# pacf - pacfd [pacman find]: find a package
+pacfd() {
+    var="$(pacman -Slq | fzf --height "80%" --multi --preview "pacman -Si {1}" --preview-window "right:50%" --prompt "pkg: ")"
+    [ -n "$var" ] && echo "$var" | clipbd
+    devar; return 0
+}
+
+# parl - paruls [yay list]: list all installed AUR packages
+paruls() {
+    var="$(paru -Qmq | fzf --height "80%" --multi --preview "paru -Si {1}" --preview-window "right:50%" --prompt "pkg: ")"
+    [ -n "$var" ] && echo "$var" | clipbd
+    devar; return 0
+}
+
+# parf - parufd [yay find]: find an AUR package
+parufd() {
+    var="$(paru -Slaq | fzf --height "80%" --multi --preview "paru -Si {1}" --preview-window "right:50%" --prompt "pkg: ")"
+    [ -n "$var" ] && echo "$var" | clipbd
+    devar; return 0
+}
+fi
+
+# }}}
+
