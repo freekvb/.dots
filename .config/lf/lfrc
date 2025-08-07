@@ -1,0 +1,409 @@
+#-----------------------------------------------------------------------------#
+# File:     ~/.config/lf/lfrc (archlinux @ 'silent')
+# Date:     Thu 15 Mar 2022 12:05
+# Update:   Sat 15 Mar 2025 15:51
+# Owner:    fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
+#-----------------------------------------------------------------------------#
+
+
+## Based on lfrc Luke Smith & Brodie Robertson -------------------------------#
+
+# Note on Image Previews
+# For those wanting image previews, like this system, there are four steps to
+# set it up. These are done automatically for LARBS users, but I will state
+# them here for others doing it manually.
+#
+# 1. ueberzug must be installed.
+# 2. The scope file (~/.config/lf/preview [scope] for me), must have a command similar to
+#    mine to generate ueberzug images.
+# 3. A `set cleaner` line as below is a cleaner script.
+# 4. lf should be started through a wrapper script (~/.local/bin/lfub for me)
+#    that creates the environment for ueberzug. This command can be be aliased
+#    in your shellrc (`alias lf="lfub") or if set to a binding, should be
+#    called directly instead of normal lf.
+
+
+## basic vars ----------------------------------------------------------------#
+
+set ratios '9:15:20'
+set hidden
+set ignorecase
+set number
+set relativenumber
+set cursorpreviewfmt " "
+set info size
+set dircounts
+set shell sh
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 10
+set wrapscroll
+set icons
+set period 1
+set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
+set cleaner '~/.config/lf/cleaner'
+set previewer '~/.config/lf/preview'
+set promptfmt "\033[37;1m%d\033[0m\033[37;1m%f\033[0m"
+
+
+## custom functions ----------------------------------------------------------#
+
+cmd on-cd &{{
+    # '&' commands run silently in background (which is what we want here),
+    # but are not connected to stdout.
+    # To make sure our escape sequence still reaches stdout we pipe it to /dev/tty
+    printf "\033]0; $(pwd | sed "s|$HOME|~|") - lf\007" > /dev/tty
+}}
+# also run at startup
+on-cd
+
+cmd open ${{
+    case $(file --mime-type "$f" -bL) in
+        text/*|application/json) $EDITOR "$fx";;
+        video/*|application/pdf) xdg-open "$f" & disown;;
+        audio/*) mpv --audio-display=no $f ;;
+        audio/*) ffplay -nodisp -autoexit $f ;;
+#        image/*) feh -F $f & disown;
+        image/*) feh -F $f;;
+        *) for f in "$fx"; do xdg-open "$f"> /dev/null 2> /dev/null & done;;
+    esac
+}}
+
+# make new directory
+cmd mkdir %{{
+    if [ "$1" ]; then
+        mkdir -p -- "$@" && lf -remote "send $id select \"$1\""
+    fi
+}}
+
+#cmd mkdir ${{
+#    set -f
+#    printf "\nDirectory Name: "
+#    read ans
+#    mkdir $ans
+#}}
+
+# make new file
+cmd mkfile ${{
+    set -f
+    printf "\nFile Name: "
+    read ans
+    $EDITOR $ans
+}}
+
+# make new 'root' file
+cmd doasmkfile ${{
+    set -f
+    printf "\nFile Name: "
+    read ans
+    doas $EDITOR $ans
+}}
+
+# make new script
+cmd mkscript ${{
+    set -f
+    printf "\nFile Name: "
+    read ans
+    touch ~/Scripts/"$ans"
+    chmod +x ~/Scripts/"$ans"
+    $EDITOR ~/Scripts/"$ans"
+}}
+
+# change file permissions
+cmd chmod ${{
+  set -f
+  printf "\nMode Bits: "
+  read ans
+  for file in "$fx"
+  do
+    chmod $ans $file
+  done
+  lf -remote 'send reload'
+}}
+
+# make file executable
+cmd chmodx ${{
+  for file in "$fx"
+  do
+    chmod +x $file
+  done
+  lf -remote 'send reload'
+}}
+
+# jump with fzf
+cmd fzf_jump ${{
+  res="$(find -maxdepth 3 | fzf --reverse --header='Jump to location')"
+  if [ -f "$res" ]; then
+    cmd="select"
+  elif [ -d "$res" ]; then
+    cmd="cd"
+  fi
+  lf -remote "send $id $cmd \"$res\""
+}}
+
+# delete current file or selected files (prompting)
+cmd delete ${{
+    set -f
+    printf "\n$fx\n"
+    printf "Delete? [y/n] "
+    read ans
+    [ $ans = "y" ] && rm -rf $fx
+}}
+
+# trash cli bindings
+cmd trash ${{
+  files=$(printf "$fx" | tr '\n' ';')
+  while [ "$files" ]; do
+    # extract the substring from start of string up to delimiter.
+    # this is the first "element" of the string.
+    file=${files%%;*}
+    trash-put "$(basename "$file")"
+    # if there's only one element left, set `files` to an empty string.
+    # this causes us to exit this `while` loop.
+    # else, we delete the first "element" of the string from files, and move onto the next.
+    if [ "$files" = "$file" ]; then
+      files=''
+    else
+      files="${files#*;}"
+    fi
+  done
+}}
+
+cmd clear_trash %trash-empty
+
+cmd restore_trash ${{
+  trash-restore
+}}
+
+## trash
+#$mkdir -p ~/.cache/lf/trash
+#cmd trash $IFS="`printf '\n\t'`"; mv -f $fx ~/.cache/lf/trash
+
+# extract the current file with the right command
+# (xkcd link: https://xkcd.com/1168/)
+cmd extract ${{
+    set -f
+    case $f in
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
+        *.tar.gz|*.tgz) tar xzvf $f;;
+        *.tar.xz|*.txz) tar xJvf $f;;
+        *.zip) unzip $f;;
+        *.rar) unrar x $f;;
+        *.7z) 7z x $f;;
+    esac
+}}
+
+# compress current file or selected files with tar and gunzip
+cmd tar ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    tar czf $1.tar.gz $1
+    rm -rf $1
+}}
+
+# compress current file or selected files with zip
+cmd zip ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    zip -r $1.zip $1
+    rm -rf $1
+}}
+
+# symlinks
+# yy (select for copy) and P to paste soft-link
+# cc (select for cut) and P to paste hard-link
+cmd link %{{
+    set -- $(cat ~/.local/share/lf/files)
+    mode="$1"
+    shift
+    if [ "$#" -lt 1 ]; then
+        lf -remote "send $id echo no files to link"
+        exit 0
+    fi
+    case "$mode" in
+        # symbolically copy mode is indicating a soft link
+        copy) ln -sr -t . -- "$@";;
+        # while a move mode is indicating a hard link
+        move) ln -t . -- "$@";;
+    esac
+    rm ~/.local/share/lf/files
+    lf -remote "send clear"
+}}
+
+# open terminal
+cmd openterm ${{
+    devour $TERM
+}}
+
+# [bg = hyprland] set wallpaper (cli only)
+cmd wall ${{
+    wal_bg
+}}
+
+# [bgt = hyprland] set wallpaper and colortheme (cli only)
+cmd wallpaper ${{
+    wal_hypr
+}}
+
+# [mp] play music file with moc
+cmd play_music ${{
+    moc_music
+}}
+
+# [bg = x | dwm] set wallpaper and colorscheme (cli only) when running dwm
+#cmd py-wallpaper %cp "$f" ~/.config/wall.png && wal -i "$f" && (cd $HOME/Programs/dwm && rm -f config.h ; doas make clean install) && (cd $HOME/Programs/dmenu && rm -f config.h ; doas make clean install) && xdotool key super+shift+q
+
+# bulk rename
+cmd bulkrename $vidir
+
+
+## bindings ------------------------------------------------------------------#
+
+# remove some defaults
+map "'"
+map '"'
+map ,
+map c
+map d
+map e
+map m
+map q
+map r
+
+# escape
+map <esc>       :unselect;clear;
+
+# close
+map ,q          quit
+
+# map : to ;
+map ;           read
+
+map gg          top
+map G           bottom
+
+# trash mappings
+map dd          trash
+map ct          clear_trash
+map rt          restore_trash
+
+map DD          delete
+map cc          cut
+map y           copy
+map p           paste
+
+map md          push :mkdir<space>
+#map md          mkdir
+map mf          mkfile
+map ms          mkscript
+map mF          doasmkfile
+map cm          chmod
+map x           chmodx
+map U           unselect
+map E           extract
+map bg          wall # [hyprland wallpaper]
+map bt          wallpaper # [hyprland wallpaper & colortheme]
+#map bgx         set py-wallpaper # [x | dwm]
+map mp          play_music
+
+map <enter>     shell
+map V           push :!nvim<space>
+map YY          $printf "%s" "$fx" | xclip -selection clipboard
+
+map R           reload
+map C           clear
+
+# rename
+map cw          rename
+map B           bulkrename
+map A           rename                  # at the very end
+#map c           push A<c-u>             # new rename
+map I           push A<c-a>             # at the very beginning
+map i           push A<a-b><a-b><a-f>   # before extention
+map a           push A<a-b>             # after extention
+
+# symlinks
+# cc (select for cut) and P to paste hard-link
+# y (select for copy) and P to paste soft-link
+map P           :link
+
+## file openers
+map ch          push :!nvim<space>$HOME/.config/hypr/hyprland.conf<enter>
+map cv          push :!nvim<space>$HOME/.config/lf/lfrc<enter>
+map cz          push :!nvim<space>$HOME/.config/zsh/.zshrc<enter>
+map ob          $$BROWSER "$f"
+map of          open $f
+map oh          $helix "$f"
+map ol          $$PAGER "$f"
+map ot          openterm
+map ov          $$EDITOR "$f"
+map odv         $doas $EDITOR "$f"
+map oz          $$READER "$f"
+
+# execute current file (must be executable)
+#map x           $$f
+map X           !$f
+
+## fzf
+map f           $lf -remote "send $id select '$(fzf)'"
+map F           $vi $(fzf)
+map J           fzf_jump
+
+## fast navigation
+map gh          cd ~
+map gD          cd ~/Documents
+map gd          cd ~/Downloads
+map gM          cd ~/Media
+map gm          cd ~/Music
+map gn          cd ~/Notes/notes
+map gt          cd ~/Notes/trades/tp
+map gp          cd ~/Pictures
+map gw          cd ~/Pictures/wallpapers
+map gP          cd ~/Programs
+map gS          cd ~/Scripts
+map gT          cd ~/Torrents
+map gc          cd ~/.config
+map gl          cd ~/.local
+map gs          cd ~/.local/share
+map g0          cd ~/.local/share/Trash/files
+map g/          cd /
+map ge          cd /etc
+map gM          cd /mnt
+map gu          cd /usr
+
+## fast movement
+map Mh          $mv "$f" ~
+map MD          $mv "$f" ~/Documents
+#map Md          $mv "$f" ~/Downloads
+map MM          $mv "$f" ~/Media
+map Mm          $mv "$f" ~/Music
+map Mn          $mv "$f" ~/Notes
+map Mt          $mv "$f" ~/Notes/trades
+map Mp          $mv "$f" ~/Pictures
+map Mw          $mv "$f" ~/Pictures/wallpapers
+map MP          $mv "$f" ~/Programs
+map MS          $mv "$f" ~/Scripts
+map MT          $mv "$f" ~/Torrents
+map Mc          $mv "$f" ~/.config
+map Ml          $mv "$f" ~/.local
+map Ms          $mv "$f" ~/.local/share
+
+## fast copy
+map Yh          $cp "$f" ~
+map YD          $cp "$f" ~/Documents
+#map Yd          $cp "$f" ~/Downloads
+map YM          $cp "$f" ~/Media
+map Ym          $cp "$f" ~/Music
+map Yn          $cp "$f" ~/Notes
+map Yt          $cp "$f" ~/Notes/trades
+map Yp          $cp "$f" ~/Pictures
+map Yw          $cp "$f" ~/Pictures/wallpapers
+#map YP          $cp "$f" ~/Programs
+map YS          $cp "$f" ~/Scripts
+map YT          $cp "$f" ~/Torrents
+map Yc          $cp "$f" ~/.config
+map Yl          $cp "$f" ~/.local
+map Ys          $cp "$f" ~/.local/share
+
