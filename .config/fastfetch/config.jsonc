@@ -1,0 +1,122 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "padding": {
+            "top": 1,
+            "left": 2,
+            "right": 5,
+            "bottom": 1
+        }
+    },
+    "display": {
+        "separator": "   ",
+        "constants": [
+            "─────────────────"
+        ],
+        "key": {
+            "type": "icon",
+            "paddingLeft": 3
+        }
+    },
+    "modules": [
+        "break",
+        {
+            "type": "custom",
+            "outputColor": "red",
+            "format": "┌{$1}───────────────────────{$1}┐",
+            "outputColor": "red"
+        },
+        {
+            "type": "custom",
+            "format": " distro",
+            "color": "red"
+        },
+        {
+            "type": "os",
+            "keyIcon": "󰣇",
+            "keyColor": "blue"
+        },
+        {
+            "type": "kernel",
+            "keyIcon": "",
+            "keyColor": "blue"
+        },
+        {
+            "type": "uptime",
+            "keyIcon": "",
+            "keyColor": "blue"
+        },
+        {
+            "type": "packages",
+            "keyIcon": "󰏖",
+            "keyColor": "blue"
+        },
+        {
+            "type": "custom",
+            "format": " software",
+            "color": "red"
+        },
+        {
+            "type": "de",
+            "keyIcon": "",
+            "keyColor": "blue"
+        },
+        {
+            "type": "wm",
+            "keyIcon": "",
+            "keyColor": "blue"
+        },
+        {
+            "type": "shell",
+            "keyIcon": "",
+            "keyColor": "blue"
+        },
+        {
+            "type": "terminal",
+            "keyIcon": "",
+            "keyColor": "blue"
+        },
+        {
+            "type": "custom",
+            "format": " hardware",
+            "color": "red"
+        },
+        {
+            "type": "cpu",
+            "temp": true,
+            "keyIcon": "󰻠",
+            "keyColor": "blue"
+        },
+        {
+            "type": "gpu",
+            "keyIcon": "󰍛",
+            "keyColor": "blue"
+        },
+        {
+            "type": "memory",
+            "keyIcon": "󰑭",
+            "keyColor": "blue"
+        },
+        {
+            "type": "disk",
+            "keyIcon": "",
+            "keyColor": "blue"
+        },
+        {
+            "type": "custom",
+            "format": " colors",
+            "color": "red"
+        },
+        {
+            "type": "colors",
+            "paddingLeft": 3,
+            "symbol": "square"
+        },
+        {
+            "type": "custom",
+            "format": "└{$1}───────────────────────{$1}┘"
+        },
+        "break"
+    ]
+}
+
