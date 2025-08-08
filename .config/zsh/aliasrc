@@ -25,6 +25,7 @@ alias calc='rofi -show calc -modi calc -no-show-match -no-sort &'   # rofi calcu
 alias df='df -h'                                    # df humancreadable
 alias diff='nvim -d'                                # diff with nvim
 alias doas='doas '                                  # doas and let it work with aliases
+alias dotu='dot add -u . && dot commit -m 'update''                 # update .dots repo
 alias du='du -ch'                                   # du total and human-readable
 alias f='fzf'                                       # fzf
 alias fcd='fcdl'                                    # fzf and cdl
