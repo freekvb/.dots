@@ -1,3 +1,4 @@
+
 ------------------------------------------------------------------------------
 -- File:    ~/.config/nvim/lua/keymaps.lua (archlinux @ 'silent')
 -- Date:    Fri 01 Aug 2025 21:30
@@ -36,9 +37,11 @@ vim.keymap.set("n", "<c-k>", "<c-w>k")
 vim.keymap.set("n", "<c-l>", "<c-w>l")
 -- terminal split below, resized and in insert mode
 vim.keymap.set("n", "<leader>t", ":sp<bar>res15<bar>term<cr>")
-vim.cmd([[
+vim.cmd(
+    [[
     autocmd TermOpen * startinsert
-]])
+    ]]
+)
 vim.keymap.set("t", "<esc>", "<c-\\><c-n>", {})
 
 -- toggle netrw

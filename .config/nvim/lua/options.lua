@@ -46,20 +46,32 @@ vim.opt.complete:append("kspell")
 vim.opt.completeopt = "menu,menuone,noselect,popup,fuzzy"
 vim.o.pumheight = 15
 
-
-
 -- folding (curly brackets)
 vim.o.foldmethod = "marker"
 
+-- highlight yanked text
+vim.api.nvim_create_autocmd("TextYankPost",
+    {
+        group = augroup,
+        callback = function()
+        vim.highlight.on_yank()
+    end,
+    }
+)
+
 -- remove trailing white space
-vim.cmd([[
+vim.cmd(
+    [[
     autocmd BufWritePre * %s/\s\+$//e
-]])
+    ]]
+)
 
 -- return to last edit position at opening file
-vim.cmd([[
+vim.cmd(
+    [[
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-]])
+    ]]
+)
 
 -- cursorline
 vim.o.cursorline = true
@@ -72,7 +84,7 @@ vim.cmd(
     autocmd VimEnter * highlight CursorLine gui=bold,italic guibg=grey3 guifg=NONE
     autocmd InsertEnter * highlight CursorLine guibg=0 guifg=NONE
     autocmd InsertLeave * highlight CursorLine gui=bold,italic guibg=grey3 guifg=NONE
-]]
+    ]]
 )
 
 -- cursorcolumn disabled in insert mode
@@ -81,20 +93,22 @@ vim.cmd(
     autocmd VimEnter * highlight CursorColumn guibg=grey3 guifg=NONE
     autocmd InsertEnter * highlight CursorColumn guibg=0 guifg=NONE
     autocmd InsertLeave * highlight CursorColumn guibg=grey3 guifg=NONE
-]]
+    ]]
 )
 
 -- automatically leave insert mode
-vim.cmd([[
+vim.cmd(
+    [[
     au CursorHoldI * stopinsert
-]])
+    ]]
+)
 
 -- insert mode inactive time
 vim.cmd(
     [[
     au InsertEnter * let updaterestore=&updatetime | set updatetime=5000
     au InsertLeave * let &updatetime=updaterestore
-]]
+    ]]
 )
 
 -- instant markdown

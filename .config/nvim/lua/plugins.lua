@@ -29,7 +29,11 @@ require("black-metal").setup(
     }
 )
 require("black-metal").load()
-vim.cmd(":hi statusline guibg=grey3")
+vim.cmd(
+    [[
+    hi statusline guibg=grey3
+    ]]
+)
 
 ---- pywal16
 --local pywal16 = require('pywal16')

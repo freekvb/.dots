@@ -24,4 +24,3 @@ require('netrw')
 require('options')
 
 require('plugins')
-

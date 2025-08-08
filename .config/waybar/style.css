@@ -122,29 +122,34 @@ button:hover {
 }
 
 #battery {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: @color0;
+    color: @color7;
 }
 
 #battery.charging, #battery.plugged {
-    color: #ffffff;
-    background-color: #26A65B;
+    background-color: @color0;
+    color: @color9;
+}
+
+#battery.warning:not(.charging) {
+    background-color: @color0;
+    color: @color3;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: #000000;
+        background-color: @color8;
+        color: @color3;
     }
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
+    background-color: @color0;
+    color: @color3;
     animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
+    animation-duration: 1s;
+    animation-timing-function: steps(6);
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }

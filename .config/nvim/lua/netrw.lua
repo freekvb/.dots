@@ -29,7 +29,7 @@ vim.cmd(
         execute 'belowright vnew' g:path
         :normal <c-w>l
     endfunction
-]]
+    ]]
 )
 -- open below
 vim.cmd(
@@ -41,7 +41,7 @@ vim.cmd(
         execute 'belowright new' g:path
         :normal <c-w>l
     endfunction
-]]
+    ]]
 )
 
 -- keymapping function
@@ -62,21 +62,21 @@ vim.cmd(
         autocmd!
         autocmd filetype netrw call NetrwMappings()
     augroup END
-]]
+    ]]
 )
 
 -- close hidden buffer
 vim.cmd(
     [[
     autocmd FileType netrw setl bufhidden=delete
-]]
+    ]]
 )
 
 -- close netrw if it's the only buffer open
 vim.cmd(
     [[
     autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), '&filetype') == 'netrw' || &buftype == 'quickfix' |q|endif
-]]
+    ]]
 )
 
 -- no dubble netrw buffers
@@ -98,7 +98,7 @@ vim.cmd(
             silent Lexplore
         endif
     endfunction
-]]
+    ]]
 )
 
 -- close after opening file
@@ -117,10 +117,10 @@ vim.cmd(
             endif
         endfor
     endfunction
-augroup closeOnOpen
-    autocmd!
-    autocmd BufWinEnter * if getbufvar(winbufnr(winnr()), '&filetype') != 'netrw'|call CloseNetrw()|endif
-augroup END
-]]
+    augroup closeOnOpen
+        autocmd!
+        autocmd BufWinEnter * if getbufvar(winbufnr(winnr()), '&filetype') != 'netrw'|call CloseNetrw()|endif
+    augroup END
+    ]]
 )
 
