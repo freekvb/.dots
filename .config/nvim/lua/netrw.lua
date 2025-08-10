@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------------
 -- File:    ~/.config/nvim/lua/netrw.lua (archlinux @ 'silent')
 -- Date:    Fri 01 Aug 2025 21:30
--- Update:  Mon 04 Aug 2025 09:55
+-- Update:  Sun 10 Aug 2025 23:45
 -- Owner:   fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 -------------------------------------------------------------------------------
 

@@ -36,6 +36,7 @@ alias ff='fifo'                                     # fzf given string in files
 alias fh='hst'                                      # fzf term command history > clipboard
 alias fhx='fhx'                                     # fzf term command history execute
 alias fin='cd $HOME/Notes/notes && fifo'            # fzf given string in notes
+alias fins='cd $HOME/Notes/notes_scratch && fifo'   # fzf given string in notes_scratch
 alias fn='cd $HOME/Notes/notes && fzf'              # fzf notes
 alias fk='fkill'                                    # fzf and kill proces
 alias fm='macho'                                    # fzf man pages
@@ -55,7 +56,9 @@ alias md='mkdir'                                    # create new directory
 alias mf='touch'                                    # create new file
 alias moc='mocp -M "$XDG_CONFIG_HOME"/moc'          # config file from .moc to .config/moc
 alias ms='$HOME/Scripts/mkscript'                   # create new script
+alias n='notes'                                     # scratch note: 'one liners' (saved in per day dated notes_scratch)
 alias nn='vi $HOME/Notes/notes/.new_note.md'        # new note in i-mode, sn to savel
+alias nq='copyq read | notes'                       # paste clipboard in scratch note
 alias paccl='doas paccache -rk 1 && doas paccache -ruk0 && pacman -Qtdq | pacman -Rns -'    # clean out pacman cache
 alias pacman='doas pacman --color=always'           # pacman color
 alias pacr='$HOME/Scripts/pacr'                     # pacman fzf remove given pkg (incl deps & confs)

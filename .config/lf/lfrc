@@ -358,6 +358,7 @@ map gd          cd ~/Downloads
 map gM          cd ~/Media
 map gm          cd ~/Music
 map gn          cd ~/Notes/notes
+map gs          cd ~/Notes/notes_scratch
 map gt          cd ~/Notes/trades/tp
 map gp          cd ~/Pictures
 map gw          cd ~/Pictures/wallpapers
@@ -366,7 +367,6 @@ map gS          cd ~/Scripts
 map gT          cd ~/Torrents
 map gc          cd ~/.config
 map gl          cd ~/.local
-map gs          cd ~/.local/share
 map g0          cd ~/.local/share/Trash/files
 map g/          cd /
 map ge          cd /etc
@@ -379,8 +379,9 @@ map MD          $mv "$f" ~/Documents
 #map Md          $mv "$f" ~/Downloads
 map MM          $mv "$f" ~/Media
 map Mm          $mv "$f" ~/Music
-map Mn          $mv "$f" ~/Notes
-map Mt          $mv "$f" ~/Notes/trades
+map Mn          $mv "$f" ~/Notes/notes
+map Ms          $mv "$f" ~/Notes/notes_scratch
+map Mt          $mv "$f" ~/Notes/trades/tp
 map Mp          $mv "$f" ~/Pictures
 map Mw          $mv "$f" ~/Pictures/wallpapers
 map MP          $mv "$f" ~/Programs
@@ -388,7 +389,6 @@ map MS          $mv "$f" ~/Scripts
 map MT          $mv "$f" ~/Torrents
 map Mc          $mv "$f" ~/.config
 map Ml          $mv "$f" ~/.local
-map Ms          $mv "$f" ~/.local/share
 
 ## fast copy
 map Yh          $cp "$f" ~
@@ -396,14 +396,14 @@ map YD          $cp "$f" ~/Documents
 #map Yd          $cp "$f" ~/Downloads
 map YM          $cp "$f" ~/Media
 map Ym          $cp "$f" ~/Music
-map Yn          $cp "$f" ~/Notes
-map Yt          $cp "$f" ~/Notes/trades
+map Yn          $cp "$f" ~/Notes/notes
+#map Ys          $cp "$f" ~/Notes/notes_scratch
+map Yt          $cp "$f" ~/Notes/trades/tp
 map Yp          $cp "$f" ~/Pictures
 map Yw          $cp "$f" ~/Pictures/wallpapers
-#map YP          $cp "$f" ~/Programs
+map YP          $cp "$f" ~/Programs
 map YS          $cp "$f" ~/Scripts
 map YT          $cp "$f" ~/Torrents
 map Yc          $cp "$f" ~/.config
 map Yl          $cp "$f" ~/.local
-map Ys          $cp "$f" ~/.local/share
 

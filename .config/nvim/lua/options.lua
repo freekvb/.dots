@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
 -- File:    ~/.config/nvim/lua/options.lua (archlinux @ 'silent')
 -- Date:    Fri 01 Aug 2025 21:30
--- Update:  Mon 04 Aug 2025 09:56
+-- Update:  Sun 10 Aug 2025 23:44
 -- Owner:   fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 -------------------------------------------------------------------------------
 
@@ -17,18 +17,32 @@ vim.o.shiftwidth = 4
 vim.o.smartindent = true
 vim.o.swapfile = false
 vim.o.undofile = true
-vim.o.scrolloff = 10
+vim.o.scrolloff = 15
 vim.o.virtualedit = "all"
 vim.opt.fillchars = {eob = " "}
 
--- split buffers
+-- split buffers right/below
 vim.o.splitright = true
 vim.o.splitbelow = true
+
+-- start terminal in insert mode
+vim.cmd(
+    [[
+    autocmd TermOpen * startinsert
+    ]]
+)
 
 -- search case insensitive
 vim.o.ignorecase = true
 -- enable smart case search
 vim.o.smartcase = true
+
+-- quickfix grep <string> [<leader>fg]
+vim.cmd(
+    [[
+    command! -nargs=+ Grep execute 'silent grep! <args>' | copen
+    ]]
+)
 
 -- fuzzy file finding
 vim.opt.path:append("**")
@@ -43,32 +57,14 @@ vim.opt.iskeyword:append("-")
 
 -- completion
 vim.opt.complete:append("kspell")
-vim.opt.completeopt = "menu,menuone,noselect,popup,fuzzy"
-vim.o.pumheight = 15
-
--- auto completion
-local triggers = {'.'}
-vim.api.nvim_create_autocmd('InsertCharPre', {
-  buffer = vim.api.nvim_get_current_buf(),
-  callback = function()
-    if vim.fn.pumvisible() == 1 or vim.fn.state('m') == 'm' then
-      return
-    end
-    local char = vim.v.char
-    if vim.list_contains(triggers, char) then
-      local key = vim.keycode('<C-x><C-n>')
-      vim.api.nvim_feedkeys(key, 'm', false)
-    end
-  end
-})
+vim.opt.completeopt = "menuone,noselect,longest,fuzzy"
+vim.o.pumheight = 10
 
 -- folding (curly brackets)
 vim.o.foldmethod = "marker"
 
 -- highlight yanked text
-vim.api.nvim_create_autocmd("TextYankPost",
-    {
-        group = augroup,
+vim.api.nvim_create_autocmd("TextYankPost", { group = augroup,
         callback = function()
         vim.highlight.on_yank()
     end,

@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------------
 -- File:    ~/.config/nvim/lua/plugins.lua (archlinux @ 'silent')
 -- Date:    Fri 01 Aug 2025 21:30
--- Update:  Mon 04 Aug 2025 09:56
+-- Update:  Sun 10 Aug 2025 23:45
 -- Owner:   fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 -------------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ require("black-metal").setup(
 require("black-metal").load()
 vim.cmd(
     [[
-    hi statusline guibg=grey3
+    hi statusline guibg=grey7
     ]]
 )
 
@@ -71,9 +71,7 @@ require("lualine").setup(
 -- mini starter
 require("mini.starter").setup(
     {
-        autoopen = true,
-        evaluate_single = false,
-        items = nil,
+        autoopen = true, evaluate_single = false, items = nil,
         header = " ",
         footer = " ",
         content_hooks = nil,
