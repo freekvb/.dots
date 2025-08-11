@@ -1,6 +1,25 @@
 # nvim_nightly
 
 
+#### quickfix bufferlist
+
+```vim
+-- buflist to quickfix list [Vitaly Kurin]
+vim.keymap.set("n", "<leader>b", function()
+    local qf_list = {}
+    for _, buf in ipairs(vim.fn.getbufinfo()) do
+        if buf.listed == 1 then
+            table.insert(qf_list, {
+                filename = buf.name ~= '' and buf.name or '[No Name]',
+                text = ':' .. buf.bufnr
+            })
+        end
+    end
+    vim.fn.setqflist(qf_list, 'r')
+    vim.cmd('copen')
+end, {})
+```
+
 #### colortheme 'base16-black-metal' plugin
 
 ```vim

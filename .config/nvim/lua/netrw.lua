@@ -55,8 +55,6 @@ vim.cmd(
         " make h and l work as intended
             nmap <buffer> h u
             nmap <buffer> l <cr>
-        " close netrw
-            nmap <buffer> <Leader>dd :Lexplore<CR>
     endfunction
     augroup netrw_mappings
         autocmd!

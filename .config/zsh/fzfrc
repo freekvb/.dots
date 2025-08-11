@@ -66,43 +66,9 @@ fcdlh() {
     devar; return 0
 }
 
-# fv - vif [vi fuzzy]: open a file in $EDITOR
-vif() {
-    [ -n "$1" ] && "$EDITOR" "$1" && return 0
-    var="$(fzf --prompt "edit: ")"
-    [ -n "$var" ] && "$EDITOR" "$var"
-    devar; return 0
-}
-
-# fo - fopen open a file with xdg-open
-fopen() {
-    fd -t f -H -I --exclude '\.git*' | fzf -m --preview="xdg-mime query filetype {}" | xargs -ro -d "\n" xdg-open 2>&-
-}
-
-# fh - hst [history]: search command line history & copy selected
-hst() {
-    var="$(history | cut -c8- | fzf --multi --tac --prompt "history: ")"
-    [ -n "$var" ] && echo "$var" | clipbd
-    devar; return 0
-}
-
-# fhx - find command from history and execute
-function fhx() {
-  eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac --prompt "history: " | sed 's/ *[0-9]* *//')
-}
-
-# fk - fkill - kill processes - list only the ones you can kill - alias: fk
-fkill() {
-	local pid
-	if [ "$UID" != "0" ]; then
-		pid=$(ps -f -u $UID | sed 1d | fzf -m --prompt "kill: " | awk '{print $2}')
-	else
-		pid=$(ps -ef | sed 1d | fzf -m --prompt "kill: " | awk '{print $2}')
-	fi
-	if [ "x$pid" != "x" ]
-	then
-		echo $pid | xargs kill -${1:-9}
-	fi
+# fe - fzf execute pac_installed program
+fexec() {
+    $(bat $HOME/Notes/pac_installed.md | fzf --prompt "exec: ")
 }
 
 # ff - find given string in files, open in nvim and go to 1st search result
@@ -121,14 +87,48 @@ fifo() {
 	fi
 }
 
+# fh - hst [history]: search command line history & copy selected
+hst() {
+    var="$(history | cut -c8- | fzf --multi --tac --prompt "history: ")"
+    [ -n "$var" ] && echo "$var" | clipbd
+    devar; return 0
+}
+
+# fhx - find command from history and execute
+function fhx() {
+  eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac --prompt "history: " | sed 's/ *[0-9]* *//')
+}
+# fv - vif [vi fuzzy]: open a file in $EDITOR
+vif() {
+    [ -n "$1" ] && "$EDITOR" "$1" && return 0
+    var="$(fzf --prompt "edit: ")"
+    [ -n "$var" ] && "$EDITOR" "$var"
+    devar; return 0
+}
+
+# fk - fkill - kill processes - list only the ones you can kill - alias: fk
+fkill() {
+	local pid
+	if [ "$UID" != "0" ]; then
+		pid=$(ps -f -u $UID | sed 1d | fzf -m --prompt "kill: " | awk '{print $2}')
+	else
+		pid=$(ps -ef | sed 1d | fzf -m --prompt "kill: " | awk '{print $2}')
+	fi
+	if [ "x$pid" != "x" ]
+	then
+		echo $pid | xargs kill -${1:-9}
+	fi
+}
+
+# fo - fopen open a file with xdg-open
+fopen() {
+    fd -t f -H -I --exclude '\.git*' | fzf -m --preview="xdg-mime query filetype {}" | xargs -ro -d "\n" xdg-open 2>&-
+}
+
+
 # fp - fzf preview
 fprev() {
     fzf --preview "bat --style=plain --theme=base16 --color=always --line-range :100 {}" --preview-window "right:50%"
-}
-
-# fe - fzf execute pac_installed program
-fexec() {
-    $(bat $HOME/Notes/pac_installed.md | fzf --prompt "exec: ")
 }
 
 # }}}
@@ -137,33 +137,35 @@ fexec() {
 
 # i use arch btw
 if [ -f "/etc/arch-release" ]; then
-# pacl - pacls [pacman list]: list all installed packages
-pacls() {
-    var="$(pacman -Qq | fzf --height "80%" --multi --preview "pacman -Si {1}" --preview-window "right:50%" --prompt "pkg: ")"
-    [ -n "$var" ] && echo "$var" | clipbd
-    devar; return 0
-}
 
-# pacf - pacfd [pacman find]: find a package
-pacfd() {
-    var="$(pacman -Slq | fzf --height "80%" --multi --preview "pacman -Si {1}" --preview-window "right:50%" --prompt "pkg: ")"
-    [ -n "$var" ] && echo "$var" | clipbd
-    devar; return 0
-}
+    # pacf - pacfd [pacman find]: find a package
+    pacfd() {
+        var="$(pacman -Slq | fzf --height "80%" --multi --preview "pacman -Si {1}" --preview-window "right:50%" --prompt "pkg: ")"
+        [ -n "$var" ] && echo "$var" | clipbd
+        devar; return 0
+    }
 
-# parl - paruls [yay list]: list all installed AUR packages
-paruls() {
-    var="$(paru -Qmq | fzf --height "80%" --multi --preview "paru -Si {1}" --preview-window "right:50%" --prompt "pkg: ")"
-    [ -n "$var" ] && echo "$var" | clipbd
-    devar; return 0
-}
+    # pacl - pacls [pacman list]: list all installed packages
+    pacls() {
+        var="$(pacman -Qq | fzf --height "80%" --multi --preview "pacman -Si {1}" --preview-window "right:50%" --prompt "pkg: ")"
+        [ -n "$var" ] && echo "$var" | clipbd
+        devar; return 0
+    }
 
-# parf - parufd [yay find]: find an AUR package
-parufd() {
-    var="$(paru -Slaq | fzf --height "80%" --multi --preview "paru -Si {1}" --preview-window "right:50%" --prompt "pkg: ")"
-    [ -n "$var" ] && echo "$var" | clipbd
-    devar; return 0
-}
+    # parf - parufd [yay find]: find an AUR package
+    parufd() {
+        var="$(paru -Slaq | fzf --height "80%" --multi --preview "paru -Si {1}" --preview-window "right:50%" --prompt "pkg: ")"
+        [ -n "$var" ] && echo "$var" | clipbd
+        devar; return 0
+    }
+
+    # parl - paruls [yay list]: list all installed AUR packages
+    paruls() {
+        var="$(paru -Qmq | fzf --height "80%" --multi --preview "paru -Si {1}" --preview-window "right:50%" --prompt "pkg: ")"
+        [ -n "$var" ] && echo "$var" | clipbd
+        devar; return 0
+    }
+
 fi
 
 # }}}

@@ -22,8 +22,8 @@ vim.keymap.set("n", "<leader>r", ":set invrnu<cr>")
 
 -- navigate buffers
 vim.keymap.set("n", "<leader>b", ":ls<cr>")
-vim.keymap.set("n", "<s-l>", ":bnext<cr>")
-vim.keymap.set("n", "<s-h>", ":bprevious<cr>")
+vim.keymap.set("n", "<leader>bn", ":bnext<cr>")
+vim.keymap.set("n", "<leader>bp", ":bprevious<cr>")
 vim.keymap.set("n", "<leader>bd", ":bdelete<cr>")
 vim.keymap.set("n", "<leader>gb", ":ls<cr>:b<space>")
 
@@ -64,7 +64,7 @@ vim.keymap.set("n", "]", ":cprev<cr>")
 -- search and replace word under cursor
 vim.keymap.set("n", "<space><space>", [[:%s/\<<c-r>=expand('<cword>')<cr>\>/]])
 -- search and replace all instances given term
-vim.keymap.set("n", "<s-s>", [[:%s//gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>sr", [[:%s//gI<Left><Left><Left>]])
 -- clear highlighting from the search
 vim.keymap.set("n", "<esc>", ":nohlsearch<cr><esc>")
 
@@ -90,7 +90,7 @@ vim.keymap.set("n", "sn", [[:w<cr>:!save_note<cr>:q<cr>]])
 -- new local note [nn] save [and quit] finished $HOME/Notes/local_notes/[title]
 vim.keymap.set("n", "sl", [[:w<cr>:!save_note_local<cr>:q<cr>]])
 -- blog entry
-vim.keymap.set("n", "<leader>be", [[:/#<cr><cr><cr>jO<c-r>=strftime('%a %d %b %Y %H:%M')<cr><cr><cr><esc>2ko]])
+vim.keymap.set("n", "be", [[:/#<cr><cr><cr>jO<c-r>=strftime('%a %d %b %Y %H:%M')<cr><cr><cr><esc>2ko]])
 -- insert shebang
 vim.keymap.set("n", "sb", [[i#!/bin/sh<cr><cr>]])
 

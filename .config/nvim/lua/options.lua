@@ -21,7 +21,7 @@ vim.o.scrolloff = 15
 vim.o.virtualedit = "all"
 vim.opt.fillchars = {eob = " "}
 
--- split buffers right/below
+-- split windows right/below
 vim.o.splitright = true
 vim.o.splitbelow = true
 
@@ -117,4 +117,11 @@ vim.g["python3_host_prog"] = "/usr/bin/python3"
 vim.g["loaded_perl_provider"] = 0
 vim.g["loaded_node_provider"] = 0
 vim.g["loaded_ruby_provider"] = 0
+
+-- command line
+vim.o.showmode = false
+vim.o.showcmd = false
+vim.o.cmdheight = 1
+vim.opt.shortmess:append("aAcsSW")
+vim.o.inccommand = ""
 

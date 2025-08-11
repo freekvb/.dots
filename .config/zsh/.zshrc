@@ -125,10 +125,6 @@ RPS2=$RPS1
 bindkey -v
 export KEYTIMEOUT=1
 
-# add shell hotkeys
-bindkey -a '^l' clear
-bindkey -a '^d' exit
-
 # add missing nvim hotkeys
 bindkey -a u undo
 bindkey -a '^R' redo
