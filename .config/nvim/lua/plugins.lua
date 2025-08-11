@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------------
 -- File:    ~/.config/nvim/lua/plugins.lua (archlinux @ 'silent')
 -- Date:    Fri 01 Aug 2025 21:30
--- Update:  Sun 10 Aug 2025 23:45
+-- Update:  Mon 11 Aug 2025 04:08
 -- Owner:   fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 -------------------------------------------------------------------------------
 
@@ -12,7 +12,6 @@ vim.pack.add(
         { src = "file:///home/fvb/.fzf" },
         { src = "https://github.com/metalelf0/black-metal-theme-neovim" },
         -- { src = "https://github.com/uZer/pywal16.nvim", as = "pywal16" },
-        { src = "https://github.com/nvim-lualine/lualine.nvim" },
         { src = "https://github.com/echasnovski/mini.starter" },
         { src = "https://github.com/instant-markdown/vim-instant-markdown" },
         { src = "https://github.com/sphamba/smear-cursor.nvim" }
@@ -29,44 +28,10 @@ require("black-metal").setup(
     }
 )
 require("black-metal").load()
-vim.cmd(
-    [[
-    hi statusline guibg=grey7
-    ]]
-)
 
 ---- pywal16
 --local pywal16 = require('pywal16')
 --pywal16.setup()
-
--- lualine
-require("lualine").setup(
-    {
-        options = {
-            icons_enabled = false,
-            theme = "auto",
-            component_separators = "",
-            section_separators = " "
-        },
-        sections = {
-            lualine_a = {"mode"},
-            lualine_b = {"branch", "diff"},
-            lualine_c = {"filename"},
-            lualine_x = {
-                function()
-                    local encoding = vim.o.fileencoding
-                    if encoding == "" then
-                        return vim.bo.fileformat .. " :: " .. vim.bo.filetype
-                    else
-                        return encoding .. " :: " .. vim.bo.fileformat .. " :: " .. vim.bo.filetype
-                    end
-                end
-            },
-            lualine_y = {"filesize", "progress"},
-            lualine_z = {"location"}
-        }
-    }
-)
 
 -- mini starter
 require("mini.starter").setup(

@@ -108,31 +108,9 @@ vim.cmd(
     ]]
 )
 
--- automatically leave insert mode
-vim.cmd(
-    [[
-    au CursorHoldI * stopinsert
-    ]]
-)
-
--- insert mode inactive time
-vim.cmd(
-    [[
-    au InsertEnter * let updaterestore=&updatetime | set updatetime=5000
-    au InsertLeave * let &updatetime=updaterestore
-    ]]
-)
-
 -- instant markdown
 vim.g["instant_markdown_autostart"] = 0
 vim.g["instant_markdown_browser"] = "qutebrowser --target window"
-
--- command line
-vim.o.showmode = false
-vim.o.showcmd = false
-vim.o.cmdheight = 0
-vim.opt.shortmess:append("acsSW")
-vim.o.inccommand = ""
 
 -- providers
 vim.g["python3_host_prog"] = "/usr/bin/python3"
