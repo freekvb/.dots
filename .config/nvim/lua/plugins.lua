@@ -14,7 +14,8 @@ vim.pack.add(
         -- { src = "https://github.com/uZer/pywal16.nvim", as = "pywal16" },
         { src = "https://github.com/echasnovski/mini.starter" },
         { src = "https://github.com/instant-markdown/vim-instant-markdown" },
-        { src = "https://github.com/sphamba/smear-cursor.nvim" }
+        { src = "https://github.com/sphamba/smear-cursor.nvim" },
+        { src = "https://github.com/christoomey/vim-tmux-navigator" }
     }
 )
 

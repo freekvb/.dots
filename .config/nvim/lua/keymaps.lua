@@ -17,15 +17,18 @@ vim.keymap.set("n", "<leader>wq", ":wq<cr>")
 vim.keymap.set("n", "q", "<nop>")
 vim.keymap.set("n", "Q", "q")
 
+-- prevent nohlsearch message
+vim.keymap.set("n", "<esc>", ":noh<cr>")
+
 -- toggle relativenumber
 vim.keymap.set("n", "<leader>r", ":set invrnu<cr>")
 
 -- navigate buffers
-vim.keymap.set("n", "<leader>b", ":ls<cr>")
-vim.keymap.set("n", "<leader>bn", ":bnext<cr>")
-vim.keymap.set("n", "<leader>bp", ":bprevious<cr>")
-vim.keymap.set("n", "<leader>bd", ":bdelete<cr>")
-vim.keymap.set("n", "<leader>gb", ":ls<cr>:b<space>")
+vim.keymap.set("n", "bl", ":ls<cr>")
+vim.keymap.set("n", "bn", ":bnext<cr>")
+vim.keymap.set("n", "bp", ":bprevious<cr>")
+vim.keymap.set("n", "bd", ":bdelete<cr>")
+vim.keymap.set("n", "gb", ":ls<cr>:b<space>")
 
 -- split window [right, bottom]
 vim.keymap.set("n", "<leader>v", ":vsplit<cr>:vert resize 144<cr>:e<space>")
@@ -39,6 +42,12 @@ vim.keymap.set("n", "<c-l>", "<c-w>l")
 vim.keymap.set("n", "<leader>t", ":sp<bar>res15<bar>term<cr>")
 -- window normal mode [terminal start in insert mode]
 vim.keymap.set("t", "<esc>", "<c-\\><c-n>", {})
+
+-- tmux nvim pane navigation
+vim.keymap.set("n", "<c-h>", ":TmuxNavigateLeft<cr>")
+vim.keymap.set("n", "<c-j>", ":TmuxNavigateDown<cr>")
+vim.keymap.set("n", "<c-k>", ":TmuxNavigateUp<cr>")
+vim.keymap.set("n", "<c-l>", ":TmuxNavigateRight<cr>")
 
 -- toggle netrw
 vim.keymap.set("n", "<leader>n", ":Lexplore<cr>")
@@ -66,7 +75,7 @@ vim.keymap.set("n", "<space><space>", [[:%s/\<<c-r>=expand('<cword>')<cr>\>/]])
 -- search and replace all instances given term
 vim.keymap.set("n", "<leader>sr", [[:%s//gI<Left><Left><Left>]])
 -- clear highlighting from the search
-vim.keymap.set("n", "<esc>", ":nohlsearch<cr><esc>")
+vim.keymap.set("n", "<silent><esc>", ":nohlsearch<cr><esc>")
 
 -- toggle spell checking
 vim.keymap.set("n", "<leader>s", ":setlocal spell! spelllang=en_us,nl<cr>")

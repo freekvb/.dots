@@ -17,6 +17,7 @@ vim.o.shiftwidth = 4
 vim.o.smartindent = true
 vim.o.swapfile = false
 vim.o.undofile = true
+vim.opt.undodir = vim.fn.stdpath('cache') .. '/undo'
 vim.o.scrolloff = 15
 vim.o.virtualedit = "all"
 vim.opt.fillchars = {eob = " "}
@@ -121,7 +122,7 @@ vim.g["loaded_ruby_provider"] = 0
 -- command line
 vim.o.showmode = false
 vim.o.showcmd = false
-vim.o.cmdheight = 1
-vim.opt.shortmess:append("aAcsSW")
+vim.o.cmdheight = 0
+vim.opt.shortmess:append("aAcCsSW")
 vim.o.inccommand = ""
 
