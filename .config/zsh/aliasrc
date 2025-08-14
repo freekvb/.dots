@@ -25,8 +25,9 @@ alias df='df -h'                                    # df humancreadable
 alias diff='nvim -d'                                # diff with nvim
 alias doas='doas '                                  # doas and let it work with aliases
 alias dot='/usr/bin/git --git-dir=/home/fvb/.dots/ --work-tree=/home/fvb'         # bare repo
-alias dotd='dot stash && dot pull && dot stash pop'                               # download .dots repo saving local changes (small]
-alias dotu='dot add -u . && dot commit -m 'update' && dot push'                   # update .dots repo (silent)
+alias dotd='dot stash && dot pull && dot stash pop'                 # download .dots repo saving local changes (small]
+alias dots='dot status'                             # .dots git status
+alias dotu='dot add -u . && dot commit -m 'update' && dot push'     # update .dots repo (silent)
 alias du='du -ch'                                   # du total and human-readable
 alias f='fzf'                                       # fzf
 alias fcd='fcdl'                                    # fzf and cdl
