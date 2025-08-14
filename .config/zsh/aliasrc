@@ -5,7 +5,6 @@
 # Owner:    fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 #-----------------------------------------------------------------------------#
 
-#---------- aliases ----------------------------------------------------------#
 
 alias ..='cd ..'                                    # cd to parent directory
 alias c='clear'

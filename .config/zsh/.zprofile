@@ -5,5 +5,6 @@
 # Owner:    fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 #-----------------------------------------------------------------------------#
 
+
 [[ -f "$HOME/.config/zsh/.zshrc" ]] && . "$HOME/.config/zsh/.zshrc"
 
