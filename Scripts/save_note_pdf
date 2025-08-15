@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# save note pdf title
+
+name=$(awk 'NR==1 {$1=""; print substr($0,2)}' $0)
+newname=$HOME/Notes/notes/pdf/$name
+mv "$HOME"/Notes/notes/pdf/instant-markdown-d.pdf "$newname".pdf
+
+dunstify "note pdf saved .. "
+
+
+#name=$(awk 'NR==1 {$1=""; print substr($0,2)}' $0)
+#newname=$(pwd)/pdf/$name
+#mv "$(pwd)/pdf/instant-markdown-d.pdf "$newname".pdf
+#
+#dunstify "note pdf saved .. "
+
