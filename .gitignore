@@ -8,3 +8,7 @@
 .config/rtorrent/session/rtorrent.input_history
 
 .config/zsh/.zcompdump
+
+.config/user-dirs.dirs
+.config/user-dirs.locale
+
