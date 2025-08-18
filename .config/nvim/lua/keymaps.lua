@@ -17,9 +17,6 @@ vim.keymap.set("n", "<leader>wq", ":wq<cr>")
 vim.keymap.set("n", "q", "<nop>")
 vim.keymap.set("n", "Q", "q")
 
--- prevent nohlsearch message
-vim.keymap.set("n", "<esc>", ":noh<cr>")
-
 -- toggle relativenumber
 vim.keymap.set("n", "<leader>r", ":set invrnu<cr>")
 
@@ -75,7 +72,7 @@ vim.keymap.set("n", "<space><space>", [[:%s/\<<c-r>=expand('<cword>')<cr>\>/]])
 -- search and replace all instances given term
 vim.keymap.set("n", "<leader>sr", [[:%s//gI<Left><Left><Left>]])
 -- clear highlighting from the search
-vim.keymap.set("n", "<silent><esc>", ":nohlsearch<cr><esc>")
+vim.keymap.set("n", "<esc>", ":nohlsearch<cr>", {silent = true})
 
 -- toggle spell checking
 vim.keymap.set("n", "<leader>s", ":setlocal spell! spelllang=en_us,nl<cr>")
