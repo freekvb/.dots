@@ -365,6 +365,7 @@ map gw          cd ~/Pictures/wallpapers
 map gP          cd ~/Programs
 map gS          cd ~/Scripts
 map gT          cd ~/Torrents
+map gW          cd ~/Websites/fvb
 map gc          cd ~/.config
 map gl          cd ~/.local
 map g0          cd ~/.local/share/Trash/files
@@ -387,6 +388,7 @@ map Mw          $mv "$f" ~/Pictures/wallpapers
 map MP          $mv "$f" ~/Programs
 map MS          $mv "$f" ~/Scripts
 map MT          $mv "$f" ~/Torrents
+map MW          $mv "$f" ~/Websites/fvb
 map Mc          $mv "$f" ~/.config
 map Ml          $mv "$f" ~/.local
 
@@ -404,6 +406,7 @@ map Yw          $cp "$f" ~/Pictures/wallpapers
 map YP          $cp "$f" ~/Programs
 map YS          $cp "$f" ~/Scripts
 map YT          $cp "$f" ~/Torrents
+map YW          $cp "$f" ~/Websites/fvb
 map Yc          $cp "$f" ~/.config
 map Yl          $cp "$f" ~/.local
 
