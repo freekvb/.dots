@@ -29,7 +29,7 @@
         {
             "type": "custom",
             "format": " distro",
-            "color": "red"
+            "outputColor": "red"
         },
         {
             "type": "os",
@@ -54,7 +54,7 @@
         {
             "type": "custom",
             "format": " software",
-            "color": "red"
+            "outputColor": "red"
         },
         {
             "type": "de",
@@ -79,7 +79,7 @@
         {
             "type": "custom",
             "format": " hardware",
-            "color": "red"
+            "outputColor": "red"
         },
         {
             "type": "cpu",
@@ -105,7 +105,7 @@
         {
             "type": "custom",
             "format": " colors",
-            "color": "red"
+            "outputColor": "red"
         },
         {
             "type": "colors",
@@ -114,7 +114,8 @@
         },
         {
             "type": "custom",
-            "format": "└{$1}───────────────────────{$1}┘"
+            "format": "└{$1}───────────────────────{$1}┘",
+            "outputColor": "red"
         },
         "break"
     ]
