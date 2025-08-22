@@ -13,7 +13,8 @@
 .config/user-dirs.locale
 
 .config/dunst/dunstrc
+.config/foot/foot.ini
 .config/hypr/hyprland.conf
 .config/hypr/hyprlock.conf
 .config/waybar/config
-
+.config/waybar/style.css
