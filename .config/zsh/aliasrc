@@ -71,6 +71,7 @@ alias sz='source $HOME/.config/zsh/.zshrc'          # reload zsh config (.zshrc)
 alias td='peaclock --config-dir ~/.config/peaclock'                 # time date peaclock
 alias tre='trash-empty'                             # empty trash [interactive]
 alias trl='trash-list'                              # list files in trash
+alias tt='tty-clock -c -f "%A %d %B %Y"'            # time in tmux (no flickering)
 alias upd='pacman -Syu'                             # system upgrade
 alias v='nvim' 									    # nvim
 alias vd='doas nvim'                                # nvim with root privileges
