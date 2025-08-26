@@ -97,7 +97,7 @@ settings:
   fonts.debug_console:
     global: 9pt default_family
   fonts.default_family:
-    global: Terminus
+    global: IosevkaTermNerdFont-Regular,q
   fonts.default_size:
     global: 9pt
   fonts.downloads:

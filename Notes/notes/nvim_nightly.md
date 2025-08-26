@@ -1,6 +1,17 @@
 # nvim_nightly
 
 
+#### command line color
+
+```vim
+---- command line color
+--vim.cmd([[
+--    autocmd VimEnter * highlight Normal guibg=black guifg=white
+--    autocmd CmdLineEnter * set winhighlight=Normal:NormalNC | highlight Normal guibg=#615050 guifg=white | highlight NormalNC guibg=black guifg=white
+--    autocmd CmdLineLeave * highlight Normal guibg=black guifg=white
+--]])
+```
+
 #### quickfix bufferlist
 
 ```vim

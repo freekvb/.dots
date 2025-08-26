@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------------
 -- File:    ~/.config/nvim/lua/keymaps.lua (archlinux @ 'silent')
 -- Date:    Fri 01 Aug 2025 21:30
--- Update:  Mon 11 Aug 2025 04:17
+-- Update:  Tue 26 Aug 2025 11:23
 -- Owner:   fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 -------------------------------------------------------------------------------
 
@@ -87,9 +87,9 @@ vim.keymap.set("n", "<leader>a", ":set invac<cr>")
 -- easy folding
 vim.keymap.set("n", "z", "za<space>0")
 
--- instant markdown [qutebrowser]
-vim.keymap.set("n", "md", ":InstantMarkdownPreview<cr>")
-vim.keymap.set("n", "mds", ":InstantMarkdownStop<cr>")
+-- live preview [qutebrowser]
+vim.keymap.set("n", "md", ":LivePreview start<cr>")
+vim.keymap.set("n", "mds", ":LivePreview close<cr>")
 
 -- new note [nn] save [and quit] finished $HOME/Notes/notes/[title]
 vim.keymap.set("n", "sn", [[:w<cr>:!save_note<cr>:q<cr>]])

@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
 -- File:    ~/.config/nvim/lua/statusline.lua (archlinux @ 'silent')
 -- Date:    Sat 09 Aug 2025 14:23
--- Update:  Mon 11 Aug 2025 04:08
+-- Update:  Tue 26 Aug 2025 11:24
 -- Owner:   fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 -------------------------------------------------------------------------------
 
@@ -40,13 +40,13 @@ vim.cmd(
 vim.cmd(
     [[
     fun! StatusLineHighlights()
-        hi StatusLine            guibg=grey7      guifg=grey70
-        hi StatusLineNC          guibg=grey3      guifg=grey39
-        hi StatusLineSection     guibg=grey15     guifg=grey70    gui=bold
-        hi StatusLineSectionI    guibg=grey39     guifg=grey3     gui=bold
-        hi StatusLineSectionC    guibg=#615050    guifg=grey3     gui=bold
-        hi StatusLineSectionV    guibg=#b29951    guifg=grey3     gui=bold
-        hi StatusLineSectionR    guibg=#476565    guifg=grey3     gui=bold
+        hi StatusLine            guibg=grey7      guifg=grey66
+        hi StatusLineNC          guibg=grey3      guifg=grey30
+        hi StatusLineSection     guibg=grey15     guifg=grey66
+        hi StatusLineSectionI    guibg=grey30     guifg=grey82     gui=bold
+        hi StatusLineSectionC    guibg=grey42    guifg=grey3     gui=bold
+        hi StatusLineSectionV    guibg=grey54    guifg=grey3     gui=bold
+        hi StatusLineSectionR    guibg=grey66    guifg=grey3     gui=bold
     endfun
     call StatusLineHighlights()
 ]]

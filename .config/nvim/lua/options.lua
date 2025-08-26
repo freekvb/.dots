@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
 -- File:    ~/.config/nvim/lua/options.lua (archlinux @ 'silent')
 -- Date:    Fri 01 Aug 2025 21:30
--- Update:  Sun 10 Aug 2025 23:44
+-- Update:  Tue 26 Aug 2025 11:23
 -- Owner:   fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 -------------------------------------------------------------------------------
 
@@ -125,11 +125,4 @@ vim.o.showcmd = false
 vim.o.cmdheight = 0
 vim.opt.shortmess:append("aAcCsSW")
 vim.o.inccommand = "split"
-
--- command line color
-vim.cmd([[
-    autocmd VimEnter * highlight Normal guibg=black guifg=white
-    autocmd CmdLineEnter * set winhighlight=Normal:NormalNC | highlight Normal guibg=#615050 guifg=white | highlight NormalNC guibg=black guifg=white
-    autocmd CmdLineLeave * highlight Normal guibg=black guifg=white
-]])
 

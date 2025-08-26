@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------------
 -- File:    ~/.config/nvim/lua/netrw.lua (archlinux @ 'silent')
 -- Date:    Fri 01 Aug 2025 21:30
--- Update:  Sun 10 Aug 2025 23:45
+-- Update:  Tue 26 Aug 2025 11:23
 -- Owner:   fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 -------------------------------------------------------------------------------
 
@@ -18,8 +18,7 @@ vim.g.netrw_use_errorwindow = 1
 vim.g.netrw_bufsettings = "noma nomod nu rnu nobl nowrap ro"
 vim.g.netrw_bookmark = 1
 
--- open splits the right way (brodie's hack)
--- open to the right
+-- open split to the right
 vim.cmd(
     [[
     function! OpenToRight()
@@ -31,7 +30,7 @@ vim.cmd(
     endfunction
     ]]
 )
--- open below
+-- open split below
 vim.cmd(
     [[
     function! OpenBelow()
@@ -44,7 +43,7 @@ vim.cmd(
     ]]
 )
 
--- keymapping function
+-- keymap function
 vim.cmd(
     [[
     function! NetrwMappings()
