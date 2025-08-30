@@ -87,9 +87,9 @@ vim.keymap.set("n", "<leader>a", ":set invac<cr>")
 -- easy folding
 vim.keymap.set("n", "z", "za<space>0")
 
--- live preview [qutebrowser]
-vim.keymap.set("n", "md", ":LivePreview start<cr>")
-vim.keymap.set("n", "mds", ":LivePreview close<cr>")
+-- instant markdown
+vim.keymap.set("n", "md", ":InstantMarkdownPreview<cr>")
+vim.keymap.set("n", "mds", ":InstantMarkdownStop<cr>")
 
 -- new note [nn] save [and quit] finished $HOME/Notes/notes/[title]
 vim.keymap.set("n", "sn", [[:w<cr>:!save_note<cr>:q<cr>]])

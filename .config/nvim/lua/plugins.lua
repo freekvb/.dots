@@ -11,9 +11,9 @@ vim.pack.add(
     {
         { src = "file:///home/fvb/.fzf" },
         { src = "https://github.com/metalelf0/black-metal-theme-neovim" },
-        -- { src = "https://github.com/uZer/pywal16.nvim", as = "pywal16" },
+        { src = "https:github.com/instant-markdown/vim-instant-markdown" },
         { src = "https://github.com/echasnovski/mini.starter" },
-        { src = "https://github.com/brianhuster/live-preview.nvim" },
+        -- { src = "https://github.com/uZer/pywal16.nvim", as = "pywal16" },
         { src = "https://github.com/sphamba/smear-cursor.nvim" },
         { src = "https://github.com/christoomey/vim-tmux-navigator" }
     }
@@ -44,17 +44,6 @@ require("mini.starter").setup(
         query_updaters = "abcdefghijklmnopqrstuvwxyz0123456789_-.",
         silent = false
     }
-)
-
--- live preview
-    require("livepreview.config").set(
-        {
-	        port = 5500,
-	        browser = "qutebrowser",
-	        dynamic_root = false,
-	        sync_scroll = true,
-	        picker = ":FZF --no-border",
-        }
 )
 
 -- smear cursor

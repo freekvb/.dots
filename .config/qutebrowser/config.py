@@ -947,7 +947,7 @@ c.fonts.messages.warning = '8pt monospace'
 ## setting, it's replaced with the fonts listed here.
 ## Type: Font
 #c.fonts.monospace = '"xos4 Hack", Hack, Monospace, "DejaVu Sans Mono", Monaco, "Bitstream Vera Sans Mono", "Andale Mono", "Courier New", Courier, "Liberation Mono", monospace, Fixed, Consolas, Terminal'
-c.fonts.default_family = "xos4 Hack"
+c.fonts.default_family = "IosevkaTermNerdFont-Regular"
 
 ## Font used for prompts.
 ## Type: Font

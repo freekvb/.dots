@@ -47,4 +47,11 @@ To remove all cached versions of uninstalled packages, re-run paccache with u fl
 
 (Where, u flag indicates the uninstalled packages.)
 
+---
+
+#### paru
+
+    paru -Sc : delete only the cache of unused versions are deleted, maintaining the last working version accessible if needed
+
+    paru -c : remove unneeded dependencies (i.e. make depends)
 
