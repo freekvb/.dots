@@ -110,9 +110,11 @@ vim.cmd(
 )
 
 -- markdown highlighting
-vim.cmd([[
+vim.cmd(
+    [[
     au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-]])
+    ]]
+)
 
 -- instant markdown
 vim.g["instant_markdown_autostart"] = 0
@@ -127,7 +129,16 @@ vim.g["loaded_ruby_provider"] = 0
 -- command line
 vim.o.showmode = false
 vim.o.showcmd = false
-vim.o.cmdheight = 0
-vim.opt.shortmess:append("aAcCsSW")
+vim.o.cmdheight = 1
+vim.opt.shortmess:append("aAcCsSTW")
 vim.o.inccommand = "split"
 
+-- clear command line
+vim.api.nvim_create_autocmd("CmdlineLeave", {
+	group = “someGroup”,
+	callback = function()
+		vim.fn.timer_start(500, function()
+			print(" ")
+		end)
+	end
+})

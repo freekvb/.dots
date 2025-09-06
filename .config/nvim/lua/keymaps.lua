@@ -37,6 +37,8 @@ vim.keymap.set("n", "<c-k>", "<c-w>k")
 vim.keymap.set("n", "<c-l>", "<c-w>l")
 -- terminal split below, resized and in insert mode
 vim.keymap.set("n", "<leader>t", ":sp<bar>res15<bar>term<cr>")
+-- terminal split rihght, resized and in insert mode
+vim.keymap.set("n", "<leader>tv", ":vsplit<bar>vert resize 144<bar>term<cr>")
 -- window normal mode [terminal start in insert mode]
 vim.keymap.set("t", "<esc>", "<c-\\><c-n>", {})
 
