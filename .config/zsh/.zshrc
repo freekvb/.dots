@@ -44,7 +44,7 @@ zinit light Aloxaf/fzf-tab
 zinit light olets/command-execution-timer
 
 # command timer settings
-COMMAND_EXECUTION_TIMER_THRESHOLD=1
+#COMMAND_EXECUTION_TIMER_THRESHOLD=1
 COMMAND_EXECUTION_TIMER_PRINT_DURATION_AFTER_COMMAND_OUTPUT=1
 COMMAND_EXECUTION_TIMER_FOREGROUND=red
 
@@ -79,7 +79,7 @@ promptinit
 NEWLINE=$'\n'
 
 # left prompt
-PROMPT='${NEWLINE}%B%~%b%F{yellow}%B%(1j.*.)%(?..!)%b%f%   '
+PROMPT='${NEWLINE}%B%~ %b%F{yellow}%B%(1j.*.)%(?..!)%b%f%  '
 
 # right prompt
 autoload -Uz vcs_info

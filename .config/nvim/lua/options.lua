@@ -118,7 +118,7 @@ vim.cmd(
 
 -- instant markdown
 vim.g["instant_markdown_autostart"] = 0
-vim.g["instant_markdown_browser"] = "qutebrowser --target window"
+vim.g["instant_markdown_browser"] = "firefox"
 
 -- providers
 vim.g["python3_host_prog"] = "/usr/bin/python3"

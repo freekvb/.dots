@@ -79,8 +79,8 @@
 # For jack 'source' will be the name of the JACK server to connect to, e.g. 'foobar'. Default: 'default'.
 # README.md contains further information on how to setup CAVA for JACK.
 #
-; method = pulse
-; source = auto
+ method = pulse
+ source = auto
 
 ; method = pipewire
 ; source = auto
@@ -215,7 +215,7 @@
 
 [color]
 
-gradient = 1 
+gradient = 1
 
 gradient_color_0 = '#0c0a0a'  #'#8FBCBB'  # Nord Frost: Polar Night
 gradient_count = 7
@@ -229,7 +229,7 @@ gradient_color_5 = "#727272"
 gradient_color_6 = "#7f7f7f"
 gradient_color_7 = "#918686"
 gradient_color_8 = "#615050"
-; background = 
+; background =
 ; background =
 ; background =
 ; foreground =

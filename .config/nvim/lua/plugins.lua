@@ -11,7 +11,7 @@ vim.pack.add(
     {
         { src = "file:///home/fvb/.fzf" },
         { src = "https://github.com/metalelf0/black-metal-theme-neovim" },
-        { src = "https:github.com/instant-markdown/vim-instant-markdown" },
+        { src = "https://github.com/instant-markdown/vim-instant-markdown" },
         { src = "https://github.com/echasnovski/mini.starter" },
         -- { src = "https://github.com/uZer/pywal16.nvim", as = "pywal16" },
         { src = "https://github.com/sphamba/smear-cursor.nvim" },

@@ -12,14 +12,15 @@
     "spacing": 6, // Gaps between modules (12px)
     // Choose the order of the modules
     "modules-left": [
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "hyprland/window"
     //    "hyprland/mode",
     //    "hyprland/scratchpad",
     //    "custom/media"
     ],
-    "modules-center": [
-        "hyprland/window"
-    ],
+    //"modules-center": [
+    //    "hyprland/window"
+    //],
     "modules-right": [
     //    "mpd",
     //    "idle_inhibitor",
@@ -54,6 +55,9 @@
             "active": "",
             "default": ""
         }
+    },
+    "hyprland/window": {
+        "format": "<span style=\"italic\">{}</span>"
     },
     "keyboard-state": {
         "numlock": true,
