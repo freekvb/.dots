@@ -42,6 +42,7 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 zinit light olets/command-execution-timer
+zinit light TunaCuma/zsh-vi-man
 
 # command timer settings
 #COMMAND_EXECUTION_TIMER_THRESHOLD=1

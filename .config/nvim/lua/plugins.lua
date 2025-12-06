@@ -25,7 +25,7 @@ vim.pack.add(
 require("black-metal").setup(
     {
         -- theme: bathory | black-metal-day | burzum | dark-funeral | darkthrone | emperor | gorgoroth | immortal | impaled-nazarene | khold | marduk | mayhem | nile | taake | thyrfing | venom | windir
-        theme = "mayhem"
+        theme = "burzum"
     }
 )
 require("black-metal").load()

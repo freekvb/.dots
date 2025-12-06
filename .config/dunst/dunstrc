@@ -11,13 +11,13 @@
 [global]
     monitor = 0
     follow = mouse
-    width = 2544
+    width = 2560
     origin = bottom-left
-    offset = (8, 8)
+    offset = (0, 0)
     scale = 0
     notification_limit = 0
     indicate_hidden = yes
-    transparency = 20
+    transparency = 10
     separator_height = 0
     padding = 2
     horizontal_padding = 4

@@ -66,6 +66,7 @@ alias pwr='pass rm'                                 # pass remove password
 alias reboot='pamixer --allow-boost --set-volume 25 && sleep 1 && doas reboot'    # adjust volume at reboot
 alias suck='rm -f config.h ; doas make clean install'               # source suckless programs
 alias doas='doas '                                  # doas
+alias shit='doas $(fc -ln -1)'                      # last command but then with doas
 alias su='su -'                                     # real root
 alias sz='source $HOME/.config/zsh/.zshrc'          # reload zsh config (.zshrc)
 alias td='peaclock --config-dir ~/.config/peaclock'                 # time date peaclock

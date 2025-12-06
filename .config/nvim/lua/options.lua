@@ -69,9 +69,7 @@ vim.api.nvim_create_autocmd("TextYankPost", { group = augroup,
         callback = function()
         vim.highlight.on_yank()
     end,
-    }
-)
-
+    })
 -- remove trailing white space
 vim.cmd(
     [[
@@ -118,7 +116,7 @@ vim.cmd(
 
 -- instant markdown
 vim.g["instant_markdown_autostart"] = 0
-vim.g["instant_markdown_browser"] = "firefox"
+vim.g["instant_markdown_browser"] = "qutebrowser --target window"
 
 -- providers
 vim.g["python3_host_prog"] = "/usr/bin/python3"
