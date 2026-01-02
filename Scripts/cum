@@ -2,5 +2,6 @@
 
 echo "updates:  "
 echo "  pacman: " $(checkupdates | wc -l) &&
-echo "  aur:    " $(paru -Qua | wc -l) &&
+#echo "  aur:    " $(paru -Qua | wc -l) &&
+echo "  aur:    " $(yay -Qua | wc -l) &&
 echo "mail:     " $(mail_check)

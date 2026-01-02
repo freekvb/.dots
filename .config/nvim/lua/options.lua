@@ -140,3 +140,9 @@ vim.api.nvim_create_autocmd("CmdlineLeave", {
 		end)
 	end
 })
+
+-- don't trigger autocmd when executing macro
+vim.cmd([[
+  xnoremap @ :<C-U>execute "noautocmd '<,'>norm! " . v:count1 . "@" . getcharstr()<cr>
+  nnoremap @ <cmd>execute "noautocmd norm! " . v:count1 . "@" . getcharstr()<cr>
+]])

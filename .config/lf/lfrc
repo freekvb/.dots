@@ -25,7 +25,7 @@
 
 ## basic vars ----------------------------------------------------------------#
 
-set ratios '10:15:20'
+set ratios '2:3:4'
 set hidden
 set ignorecase
 set number
@@ -242,7 +242,7 @@ cmd wall ${{
     wal_bg
 }}
 
-# [bgt = hyprland] set wallpaper and colortheme (cli only)
+# [bt = hyprland] set wallpaper and colortheme (cli only)
 cmd wallpaper ${{
     wal_hypr
 }}

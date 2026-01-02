@@ -45,6 +45,7 @@ alias fo='fopen'                                    # fzf open with xdg-open
 alias fp='fprev'                                    # fzf preview
 alias fpi='fzfub'                                   # fzf preview [images]
 alias fv='vif'                                      # fzf and open in nvim
+alias gg='cd Gemini && gemini'                      # run gemini in Gemini
 alias grep='grep --color=auto'                      # grep color
 alias grim='sleep 5 && grim'                        # screenshot in 5 [from scratchpad]
 alias hx='helix'                                    # hx for helix
@@ -80,4 +81,17 @@ alias vf='$HOME/.config/vifm/scripts/vifmrun'       # run vifm file manager
 alias vi='nvim -c startinsert'                      # start nvim in insert mode
 alias vx='$HOME/Programs/nextvi/vi' 				# nextvi
 alias vz='nvim $HOME/.config/zsh/.zshrc'            # open zsh config (.zshrc)
+
+# suffix aliases
+alias -s json=jless
+alias -s md=bat
+alias -s go='$EDITOR'
+alias -s rs='$EDITOR'
+alias -s txt=bat
+alias -s log=bat
+alias -s py='$EDITOR'
+alias -s js='$EDITOR'
+alias -s ts='$EDITOR'
+alias -s html='$EDITOR'
+
 

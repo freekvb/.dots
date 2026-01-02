@@ -12,11 +12,11 @@ window#waybar {
     color: @color5;
     transition-property: background-color;
     transition-duration: .5s;
-    opacity: 0.9;
+    opacity: 0.90;
 }
 
 window#waybar.hidden {
-    opacity: 0.2;
+    opacity: 0.90;
 }
 
 /*

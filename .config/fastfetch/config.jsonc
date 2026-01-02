@@ -19,7 +19,6 @@
         }
     },
     "modules": [
-        "break",
         {
             "type": "custom",
             "outputColor": "red",
@@ -51,6 +50,7 @@
             "keyIcon": "󰏖",
             "keyColor": "blue"
         },
+        "break",
         {
             "type": "custom",
             "format": " software",

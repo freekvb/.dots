@@ -2,6 +2,6 @@ mode clock
 view digital
 date '%A %d %b %Y'
 set auto-size off
-style active-fg blue
-style colon-fg blue
+style active-fg green
+style colon-fg green
 style date blue

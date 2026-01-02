@@ -22,6 +22,14 @@ setopt interactive_comments # allow comments in shell
 unsetopt prompt_sp # don't autoclean blanklines
 stty stop undef # disable accidental ctrl s
 
+# undo
+# ctrl + underscore '^_' [built-in]
+# redo
+bindkey '^Y' redo
+
+# expands !! or !$
+bindkey ' ' magic-space
+
 #{{{ zinit
 
 # Set the directory we want to store zinit and plugins

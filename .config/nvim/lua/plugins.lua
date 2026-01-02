@@ -13,7 +13,7 @@ vim.pack.add(
         { src = "https://github.com/metalelf0/black-metal-theme-neovim" },
         { src = "https://github.com/instant-markdown/vim-instant-markdown" },
         { src = "https://github.com/echasnovski/mini.starter" },
-        -- { src = "https://github.com/uZer/pywal16.nvim", as = "pywal16" },
+        --{ src = "https://github.com/uZer/pywal16.nvim", as = "pywal16" },
         { src = "https://github.com/sphamba/smear-cursor.nvim" },
         { src = "https://github.com/christoomey/vim-tmux-navigator" }
     }
@@ -25,7 +25,7 @@ vim.pack.add(
 require("black-metal").setup(
     {
         -- theme: bathory | black-metal-day | burzum | dark-funeral | darkthrone | emperor | gorgoroth | immortal | impaled-nazarene | khold | marduk | mayhem | nile | taake | thyrfing | venom | windir
-        theme = "burzum"
+        theme = "mayhem"
     }
 )
 require("black-metal").load()

@@ -15,7 +15,8 @@ echo "  7) khold"
 echo "  8) marduk"
 echo "  9) mayhem"
 echo "  10) nile"
-echo "  11) venom\n"
+echo "  11) taake"
+echo "  12) venom\n"
 echo "theme number: "
 read n
 case $n in
@@ -49,7 +50,10 @@ case $n in
   10) wal --theme base16-black-metal-nile --cols16 &&
       wal_cava -c ~/.config/cava/config -G 7 -i ~/.cache/wal/colors.json && pkill -USR2 cava &&
       killall -SIGUSR2 waybar && pkill dunst && dunst;;
-  11) wal --theme base16-black-metal-venom --cols16 &&
+  11) wal --theme base16-black-metal-taake --cols16 &&
+      wal_cava -c ~/.config/cava/config -G 7 -i ~/.cache/wal/colors.json && pkill -USR2 cava &&
+      killall -SIGUSR2 waybar && pkill dunst && dunst;;
+  12) wal --theme base16-black-metal-venom --cols16 &&
       wal_cava -c ~/.config/cava/config -G 7 -i ~/.cache/wal/colors.json && pkill -USR2 cava &&
       killall -SIGUSR2 waybar && pkill dunst && dunst;;
   *) echo "invalid option";;

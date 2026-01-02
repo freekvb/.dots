@@ -21,4 +21,8 @@ fastfetch --logo "$WALLPAPER" --logo-type sixel --logo-width 50 --logo-height 19
 printf "preload = %s\n" $WALLPAPER > $HOME/.config/hypr/hyprpaper.conf
 printf "wallpaper = , %s\n" $WALLPAPER >> $HOME/.config/hypr/hyprpaper.conf
 
+#printf "wallpaper { %s\n" > $HOME/.config/hypr/hyprpaper.conf
+#printf "    monitor = HDMI-A-1 %s\n" >> $HOME/.config/hypr/hyprpaper.conf
+#printf "    path = %s\n" $WALLPAPER >> $HOME/.config/hypr/hyprpaper.conf
+#printf "} %s\n" >> $HOME/.config/hypr/hyprpaper.conf
 
