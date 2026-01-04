@@ -11,6 +11,9 @@ application/x-extension-xhtml=zen.desktop
 application/x-extension-xht=zen.desktop
 application/pdf=org.pwmt.zathura-pdf-poppler.desktop
 x-scheme-handler/mpv=mpv-scheme-handler.desktop
+image/png=userapp-nsxiv-06COI3.desktop
+image/jpeg=userapp-nsxiv-TM18H3.desktop
+image/webp=userapp-nsxiv-NBLCI3.desktop
 
 [Added Associations]
 application/pdf=zen.desktop;org.pwmt.zathura-pdf-poppler.desktop;
@@ -18,3 +21,7 @@ application/vnd.openxmlformats-officedocument.wordprocessingml.document=org.pwmt
 x-scheme-handler/http=zen.desktop;
 x-scheme-handler/https=zen.desktop;
 x-scheme-handler/chrome=zen.desktop;
+text/plain=userapp-nvim-M1RPI3.desktop;
+image/png=nsxiv.desktop;userapp-nsxiv-M85DI3.desktop;userapp-nsxiv-06COI3.desktop;
+image/jpeg=nsxiv.desktop;userapp-nsxiv-TM18H3.desktop;
+image/webp=userapp-nsxiv-NBLCI3.desktop;

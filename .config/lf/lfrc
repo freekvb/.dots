@@ -65,6 +65,7 @@ cmd open ${{
         audio/*) ffplay -nodisp -autoexit $f ;;
 #        image/*) feh -F $f & disown;
         image/*) feh -F $f;;
+#        image/*) nsxiv --no-bar $f;;
         *) for f in "$fx"; do xdg-open "$f"> /dev/null 2> /dev/null & done;;
     esac
 }}

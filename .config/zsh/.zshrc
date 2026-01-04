@@ -1,7 +1,7 @@
 #-----------------------------------------------------------------------------#
 # File:     ~.config/zsh/.zshrc (archlinux @ 'silent')
 # Date:     Sat 25 Mqy 2024 03:00
-# Update:   Tue 05 Aug 2025 09:58
+# Update:   Sun 04 Jan 2026 11:37
 # Owner:    fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 #-----------------------------------------------------------------------------#
 
@@ -21,11 +21,6 @@ setopt auto_param_slash # when a dir is completed, add a / instead of a trailing
 setopt interactive_comments # allow comments in shell
 unsetopt prompt_sp # don't autoclean blanklines
 stty stop undef # disable accidental ctrl s
-
-# undo
-# ctrl + underscore '^_' [built-in]
-# redo
-bindkey '^Y' redo
 
 # expands !! or !$
 bindkey ' ' magic-space
@@ -242,6 +237,15 @@ source $HOME/.cache/wal/colors-tty.sh
 
 #{{{ misc
 
+# close yazi in current directory [,Q]
+function yz() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
 # cd & lsa
 cdl() {
         cd "$@" && lsa;
@@ -251,12 +255,6 @@ cdl() {
 lxd () {
     declare url=$*
     lx "https://lite.duckduckgo.com/lite?kd=-1&kp=-1&q=$*"
-}
-
-# google search and open in lynx
-lxg () {
-    declare url=$*
-    lx "https://google.com/search?q=$*"
 }
 
 # set window title to command just before running it

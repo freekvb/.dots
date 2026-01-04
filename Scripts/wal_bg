@@ -13,9 +13,10 @@ WALLPAPER="$f"
 
 # apply the selected wallpaper
 hyprctl hyprpaper reload ,"$WALLPAPER"
+#hyprctl hyprpaper wallpaper 'HDMI-A-1, "$WALLPAPER", cover'
 
 # set wallpaper in 'fast'fetch
-fastfetch --logo "$WALLPAPER" --logo-type sixel --logo-width 50 --logo-height 19 --logo-padding-top 1
+fastfetch --logo "$WALLPAPER" --logo-type sixel --logo-width 60 --logo-height 20 --logo-padding-top 1
 
 # load new wallpaper [cover = default] in hyprpaper.conf
 printf "preload = %s\n" $WALLPAPER > $HOME/.config/hypr/hyprpaper.conf
@@ -24,5 +25,6 @@ printf "wallpaper = , %s\n" $WALLPAPER >> $HOME/.config/hypr/hyprpaper.conf
 #printf "wallpaper { %s\n" > $HOME/.config/hypr/hyprpaper.conf
 #printf "    monitor = HDMI-A-1 %s\n" >> $HOME/.config/hypr/hyprpaper.conf
 #printf "    path = %s\n" $WALLPAPER >> $HOME/.config/hypr/hyprpaper.conf
+#printf "    fit_mode = cover %s\n"  >> $HOME/.config/hypr/hyprpaper.conf
 #printf "} %s\n" >> $HOME/.config/hypr/hyprpaper.conf
 

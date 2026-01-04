@@ -3,7 +3,7 @@
 #-----------------------------------------------------------------------------#
 # File:     ~/.config/zsh/exportrc  (archlinux - 'silent')
 # Date:     Thu 23 Apr 2020 12:06
-# Update:   Tue 05 Aug 2025 09:57
+# Update:   Sun 04 Jan 2026 10:55
 # Owner:    fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 #-----------------------------------------------------------------------------#
 
@@ -17,18 +17,18 @@ find_alt() { for i;do which "$i" >/dev/null &&
 
 export OPENER=$(find_alt xdg-open)
 
-export BROWSER=$(find_alt zen-browser firefox qutebrowser chromium $OPENER)
-export BROWSERCLI=$(find_alt lynx w3m $OPENER )
+export BROWSER=$(find_alt zen-browser firefox brave-browser qutebrowser $OPENER)
+export BROWSERCLI=$(find_alt lynx $OPENER )
 export DIFFPROG="nvim -d"
-export EDITOR=$(find_alt nvim helix nextvi $OPENER)
-export FILEMANAGERCLI=$(find_alt lf vifm ranger $OPENER)
-export IMAGEVIEWER=$(find_alt imv feh nsxiv $OPENER)
+export EDITOR=$(find_alt nvim helix $OPENER)
+export FILEMANAGERCLI=$(find_alt lf yazi $OPENER)
+export IMAGEVIEWER=$(find_alt feh nsxiv $OPENER)
 export MANPAGER="nvim +Man!"
 export MUSICER=$(find_alt moc mpv $OPENER)
-export PAGER=$(find_alt less more most)
+export PAGER=$(find_alt less more)
 export PLAYER=$(find_alt mpv mplayer ffplay $OPENER)
 export READER=$(find_alt zathura $OPENER)
-export TERM=$(find_alt foot st xterm $OPENER)
+export TERM=$(find_alt foot $OPENER)
 export VISUAL=$EDITOR
 
 # }}}
@@ -43,10 +43,8 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_RUNTIME_DIR="/run/user/1000"
 
 export GOPATH="$XDG_DATA_HOME/go"
-export GEM_HOME="$XDG_DATA_HOME/gem"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
-export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
 export LYNX_CFG="$XDG_CONFIG_HOME/lynx/lynx.cfg"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass/password-store"
 #export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
@@ -72,10 +70,6 @@ fi
 
 if [[ ! "$PATH" == */home/fvb/.local/share/go/bin* ]]; then
     export PATH="${PATH:+${PATH}:}/home/fvb/.local/share/go/bin"
-fi
-
-if [[ ! "$PATH" == */home/fvb/.local/share/gem/ruby/3.4.0/bin* ]]; then
-    export PATH="${PATH:+${PATH}:}/home/fvb/.local/share/gem/ruby/3.4.0/bin"
 fi
 
 if [[ ! "$PATH" == */home/fvb/.local/share/cargo/bin* ]]; then

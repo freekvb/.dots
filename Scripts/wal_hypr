@@ -2,8 +2,8 @@
 
 # set wallpaper, adjust colorscheme with pywal and set picture in fastfetch [fetch]
 
-WALLPAPER_DIR="$HOME/Pictures/wallpapers/"
-CURRENT_WALL=$(hyprctl hyprpaper listloaded)
+#WALLPAPER_DIR="$HOME/Pictures/wallpapers/"
+%CURRENT_WALL=$(hyprctl hyprpaper listloaded)
 
 # get a random wallpaper that is not the current one
 #WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$(basename "$CURRENT_WALL")" | shuf -n 1)
@@ -12,7 +12,8 @@ CURRENT_WALL=$(hyprctl hyprpaper listloaded)
 WALLPAPER="$f"
 
 # apply the selected wallpaper
-hyprctl hyprpaper reload ,"$WALLPAPER"
+#hyprctl hyprpaper reload ,"$WALLPAPER"
+#hyprctl hyprpaper wallpaper 'HDMI-A-1, "$WALLPAPER", cover'
 
 # set color theme
 wal -i "$WALLPAPER" --cols16
@@ -33,5 +34,6 @@ printf "wallpaper = , %s\n" $WALLPAPER >> $HOME/.config/hypr/hyprpaper.conf
 #printf "wallpaper { %s\n" > $HOME/.config/hypr/hyprpaper.conf
 #printf "    monitor = HDMI-A-1 %s\n" >> $HOME/.config/hypr/hyprpaper.conf
 #printf "    path = %s\n" $WALLPAPER >> $HOME/.config/hypr/hyprpaper.conf
+#printf "    fit_mode = cover %s\n"  >> $HOME/.config/hypr/hyprpaper.conf
 #printf "} %s\n" >> $HOME/.config/hypr/hyprpaper.conf
 

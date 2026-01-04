@@ -1,7 +1,7 @@
 #-----------------------------------------------------------------------------#
 # File:     ~/.config/zsh/aliasrc  (archlinux - 'silent')
 # Date:     Thu 23 Apr 2020 12:06
-# Update:   Tue 05 Aug 2025 09:58
+# Update:   Sun 04 Jan 2026 10:18
 # Owner:    fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 #-----------------------------------------------------------------------------#
 
@@ -57,16 +57,16 @@ alias mf='touch'                                    # create new file
 alias moc='mocp -M "$XDG_CONFIG_HOME"/moc'          # config file from .moc to .config/moc
 alias ms='$HOME/Scripts/mkscript'                   # create new script
 alias n='notes'                                     # scratch note: 'one liners' (saved in per day dated notes_scratch)
-alias nn='vi $HOME/Notes/notes/.new_note.md'      # new note in i-mode, sn to save
+alias nn='vi $HOME/Notes/notes/.new_note.md'        # new note in i-mode, sn to save
 alias nq='copyq read | notes'                       # paste clipboard in scratch note
+alias nsxiv='nsxiv --no-bar'                        # no bar, toggele with [b]
 alias paccl='doas paccache -rk 1 && doas paccache -ruk0 && pacman -Qtdq | pacman -Rns -'    # clean out pacman cache
 alias pacman='doas pacman --color=always'           # pacman color
 alias pwa='pass insert -m'                          # pass add new password
 alias pwe='pass edit'                               # pass edit password
 alias pwr='pass rm'                                 # pass remove password
 alias reboot='pamixer --allow-boost --set-volume 25 && sleep 1 && doas reboot'    # adjust volume at reboot
-alias suck='rm -f config.h ; doas make clean install'               # source suckless programs
-alias doas='doas '                                  # doas
+#alias suck='rm -f config.h ; doas make clean install'               # source suckless programs
 alias shit='doas $(fc -ln -1)'                      # last command but then with doas
 alias su='su -'                                     # real root
 alias sz='source $HOME/.config/zsh/.zshrc'          # reload zsh config (.zshrc)
@@ -77,9 +77,8 @@ alias tt='tty-clock -c -f "%A %d %B %Y"'            # time in tmux (no flickerin
 alias upd='pacman -Syu'                             # system upgrade
 alias v='nvim' 									    # nvim
 alias vd='doas nvim'                                # nvim with root privileges
-alias vf='$HOME/.config/vifm/scripts/vifmrun'       # run vifm file manager
+#alias vf='$HOME/.config/vifm/scripts/vifmrun'       # run vifm file manager
 alias vi='nvim -c startinsert'                      # start nvim in insert mode
-alias vx='$HOME/Programs/nextvi/vi' 				# nextvi
 alias vz='nvim $HOME/.config/zsh/.zshrc'            # open zsh config (.zshrc)
 
 # suffix aliases

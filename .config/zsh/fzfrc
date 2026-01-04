@@ -3,7 +3,7 @@
 #-----------------------------------------------------------------------------#
 # File:     ~/.config/zsh/fzfrc  (archlinux - 'silent')
 # Date:     Thu 14 Oct 2021 17:10
-# Update:   Tue 05 Aug 2025 09:57
+# Update:   Sun 04 Jan 2026 11:24
 # Owner:    fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 #-----------------------------------------------------------------------------#
 
@@ -37,7 +37,6 @@ export FZF_COMPLETION_OPTS='--no-border --info=inline'
 
 # {{{ fzf functions
 
-alias clipbd="wl-copy -r -selection clipboard"
 alias devar="unset var"
 
 # fcd - fcdl [cdl fuzzy]: cd & lsa from $HOME
@@ -140,28 +139,28 @@ if [ -f "/etc/arch-release" ]; then
     # pacf - pacfd [pacman find]: find a package
     pacfd() {
         var="$(pacman -Slq | fzf --height "80%" --multi --preview "pacman -Si {1}" --preview-window "right:50%" --prompt "pkg: ")"
-        [ -n "$var" ] && echo "$var" | clipbd
+        [ -n "$var" ] && echo "$var"
         devar; return 0
     }
 
     # pacl - pacls [pacman list]: list all installed packages
     pacls() {
         var="$(pacman -Qq | fzf --height "80%" --multi --preview "pacman -Si {1}" --preview-window "right:50%" --prompt "pkg: ")"
-        [ -n "$var" ] && echo "$var" | clipbd
+        [ -n "$var" ] && echo "$var"
         devar; return 0
     }
 
     # parf - parufd [yay find]: find an AUR package
     parufd() {
         var="$(paru -Slaq | fzf --height "80%" --multi --preview "paru -Si {1}" --preview-window "right:50%" --prompt "pkg: ")"
-        [ -n "$var" ] && echo "$var" | clipbd
+        [ -n "$var" ] && echo "$var"
         devar; return 0
     }
 
     # parl - paruls [yay list]: list all installed AUR packages
     paruls() {
         var="$(paru -Qmq | fzf --height "80%" --multi --preview "paru -Si {1}" --preview-window "right:50%" --prompt "pkg: ")"
-        [ -n "$var" ] && echo "$var" | clipbd
+        [ -n "$var" ] && echo "$var"
         devar; return 0
     }
 
