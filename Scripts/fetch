@@ -1,5 +1,5 @@
 #!/bin/zsh
 
-CURRENT_WALL=$(hyprctl hyprpaper listloaded)
+CURRENT_WALL=$(awk '/path/ {print $3}' .config/hypr/hyprpaper.conf)
 
 fastfetch --logo "$CURRENT_WALL" --logo-type sixel --logo-width 50 --logo-height 19 --logo-padding-top 1

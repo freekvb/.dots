@@ -1,3 +1,11 @@
+#-----------------------------------------------------------------------------#
+# File:     ~.config/yazi/theme.toml (archlinux @ 'silent')
+# Date:     Sat 03 Jan 2026 03:30
+# Update:   Sun 04 Jan 2026 22:21
+# Owner:    fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
+#-----------------------------------------------------------------------------#
+
+
 # If the user's terminal is in dark mode, Yazi will load `theme-dark.toml` on startup; otherwise, `theme-light.toml`.
 # You can override any parts of them that are not related to the dark/light mode in your own `theme.toml`.
 
@@ -963,3 +971,4 @@ conds = [
 ]
 
 # : }}}
+

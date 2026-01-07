@@ -1,3 +1,11 @@
+-------------------------------------------------------------------------------
+-- File:     ~.config/yazi/init.lua (archlinux @ 'silent')
+-- Date:     Sat 03 Jan 2026 03:00
+-- Update:   Sun 04 Jan 2026 22:17
+-- Owner:    fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
+-------------------------------------------------------------------------------
+
+
 -- linemode [size and last modified]
 function Linemode:size_and_mtime()
 	local time = math.floor(self._file.cha.mtime or 0)

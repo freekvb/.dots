@@ -1,3 +1,11 @@
+/*-----------------------------------------------------------------------------
+ * File:     ~.config/waybar/style.css (archlinux @ 'silent')
+ * Date:     Sat 03 Jan 2026 06:00
+ * Update:   Sun 04 Jan 2026 22:36
+ * Owner:    fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
+ *----------------------------------------------------------------------------*/
+
+
 @import url('file:///home/fvb/.cache/wal/colors-waybar.css');
 
 *{

@@ -1,5 +1,14 @@
+//----------------------------------------------------------------------------//
+// File:     ~.config/waybar/config (archlinux @ 'silent')
+// Date:     Sat 03 Jan 2026 06:00
+// Update:   Sun 04 Jan 2026 22:31
+// Owner:    fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
+//----------------------------------------------------------------------------//
+
+
 // -*- mode: jsonc -*-
 {
+    // General oprions
     "reload_style_on_change": true,
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
@@ -10,6 +19,7 @@
     "margin-bottom": 0,
     "margin-right": 0,
     "spacing": 6, // Gaps between modules (12px)
+
     // Choose the order of the modules
     "modules-left": [
         "hyprland/workspaces",
@@ -39,6 +49,7 @@
     //    "tray",
     //    "custom/power"
     ],
+
     // Modules configuration
     "hyprland/workspaces": {
         "disable-scroll": true,

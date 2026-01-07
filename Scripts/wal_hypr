@@ -3,17 +3,19 @@
 # set wallpaper, adjust colorscheme with pywal and set picture in fastfetch [fetch]
 
 #WALLPAPER_DIR="$HOME/Pictures/wallpapers/"
-%CURRENT_WALL=$(hyprctl hyprpaper listloaded)
+#CURRENT_WALL=$(awk '/path/ {print $3}' .config/hypr/hyprpaper.conf)
 
 # get a random wallpaper that is not the current one
 #WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$(basename "$CURRENT_WALL")" | shuf -n 1)
 
-# select wallpaper
-WALLPAPER="$f"
+# select wallpaper [yazi 'bg']
+WALLPAPER="$(copyq read 0)"
 
-# apply the selected wallpaper
-#hyprctl hyprpaper reload ,"$WALLPAPER"
-#hyprctl hyprpaper wallpaper 'HDMI-A-1, "$WALLPAPER", cover'
+# load new wallpaper in hyprpaper.conf
+echo 'wallpaper {' > $HOME/.config/hypr/hyprpaper.conf
+echo '  monitor = HDMI-A-1' >> $HOME/.config/hypr/hyprpaper.conf
+echo '  path =' "$WALLPAPER" >> $HOME/.config/hypr/hyprpaper.conf
+echo '}' >> $HOME/.config/hypr/hyprpaper.conf
 
 # set color theme
 wal -i "$WALLPAPER" --cols16
@@ -27,13 +29,8 @@ killall -SIGUSR2 waybar
 # set wallpaper in 'fast'fetch
 fastfetch --logo "$WALLPAPER" --logo-type sixel --logo-width 50 --logo-height 19 --logo-padding-top 1
 
-# load new wallpaper [cover = default] in hyprpaper.conf
-printf "preload = %s\n" $WALLPAPER > $HOME/.config/hypr/hyprpaper.conf
-printf "wallpaper = , %s\n" $WALLPAPER >> $HOME/.config/hypr/hyprpaper.conf
-
-#printf "wallpaper { %s\n" > $HOME/.config/hypr/hyprpaper.conf
-#printf "    monitor = HDMI-A-1 %s\n" >> $HOME/.config/hypr/hyprpaper.conf
-#printf "    path = %s\n" $WALLPAPER >> $HOME/.config/hypr/hyprpaper.conf
-#printf "    fit_mode = cover %s\n"  >> $HOME/.config/hypr/hyprpaper.conf
-#printf "} %s\n" >> $HOME/.config/hypr/hyprpaper.conf
+# reload hyprpaper
+pkill -9 hyprpaper 2>/dev/null
+sleep 0.5
+exec hyprpaper &
 

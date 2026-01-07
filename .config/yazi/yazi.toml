@@ -1,3 +1,10 @@
+#-----------------------------------------------------------------------------#
+# File:     ~.config/yazi/yazi.toml (archlinux @ 'silent')
+# Date:     Sat 03 Jan 2026 03:30
+# Update:   Sun 04 Jan 2026 22:23
+# Owner:    fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
+#-----------------------------------------------------------------------------#
+
 
 # A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
 # If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
