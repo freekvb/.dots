@@ -56,6 +56,7 @@
 [experimental]
     per_monitor_dpi = false
 
+
 [urgency_low]
     background = "#000000"
     foreground = "#c1c1c1"

@@ -126,7 +126,8 @@ fopen() {
 
 # fp - fzf preview
 fprev() {
-    fzf --preview "bat --style=plain --theme=base16 --color=always --line-range :100 {}" --preview-window "right:50%"
+#    fzf --preview "bat --style=plain --theme=base16 --color=always --line-range :100 {}" --preview-window "right:50%"
+    fzf --preview 'fzf-preview.sh {}'
 }
 
 # }}}

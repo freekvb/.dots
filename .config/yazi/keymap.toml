@@ -343,6 +343,13 @@ keymap = [
     run  = [ "copy path", "shell -- wal_bg ,%h --confirm" ]
     desc = "Set wallpaper"
 
+# Set pywal theme
+    [[mgr.prepend_keymap]]
+    on   = [ "b", "t" ]
+    for  = "linux"
+    run  = [ "copy path", "shell -- wal_hypr ,%h --confirm" ]
+    desc = "Set pywal theme"
+
 # Music play
     [[mgr.prepend_keymap]]
     on   = [ "m", "p" ]
