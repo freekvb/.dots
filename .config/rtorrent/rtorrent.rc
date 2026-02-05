@@ -37,13 +37,12 @@ execute.throw = sh, -c, (cat,\
 
 ## Listening port for incoming peer traffic (fixed; you can also randomize it)
 network.port_range.set = 62820-62920
-network.port_random.set = no
+network.port_random.set = 1
 
 ## Tracker-less torrent and UDP tracker support
 ## (conservative settings for 'private' trackers, change for 'public')
 dht.mode.set = auto
 protocol.pex.set = 1
-
 trackers.use_udp.set = 1
 
 ## Peer settings
