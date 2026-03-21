@@ -17,12 +17,12 @@ find_alt() { for i;do which "$i" >/dev/null &&
 
 export OPENER=$(find_alt xdg-open)
 
-export BROWSER=$(find_alt zen-browser firefox brave-browser qutebrowser $OPENER)
+export BROWSER=$(find_alt zen-browser brave-browser qutebrowser $OPENER)
 export BROWSERCLI=$(find_alt lynx $OPENER )
 export DIFFPROG="nvim -d"
-export EDITOR=$(find_alt nvim helix $OPENER)
-export FILEMANAGERCLI=$(find_alt lf yazi $OPENER)
-export IMAGEVIEWER=$(find_alt feh nsxiv $OPENER)
+export EDITOR=$(find_alt nvim $OPENER)
+export FILEMANAGERCLI=$(find_alt yazi $OPENER)
+export IMAGEVIEWER=$(find_alt nsxiv feh $OPENER)
 export MANPAGER="nvim +Man!"
 export MUSICER=$(find_alt moc mpv $OPENER)
 export PAGER=$(find_alt less more)

@@ -11,9 +11,9 @@ application/x-extension-xhtml=zen.desktop
 application/x-extension-xht=zen.desktop
 application/pdf=org.pwmt.zathura-pdf-poppler.desktop
 x-scheme-handler/mpv=mpv-scheme-handler.desktop
-image/png=userapp-nsxiv-06COI3.desktop
-image/jpeg=userapp-nsxiv-TM18H3.desktop
-image/webp=userapp-nsxiv-NBLCI3.desktop
+image/png=userapp-nsxiv-8FJ7L3.desktop
+image/jpeg=userapp-nsxiv-RHHJM3.desktop
+image/webp=userapp-nsxiv-ADS5L3.desktop
 
 [Added Associations]
 application/pdf=zen.desktop;org.pwmt.zathura-pdf-poppler.desktop;
@@ -22,6 +22,9 @@ x-scheme-handler/http=zen.desktop;
 x-scheme-handler/https=zen.desktop;
 x-scheme-handler/chrome=zen.desktop;
 text/plain=userapp-nvim-M1RPI3.desktop;
-image/png=nsxiv.desktop;userapp-nsxiv-M85DI3.desktop;userapp-nsxiv-06COI3.desktop;
-image/jpeg=nsxiv.desktop;userapp-nsxiv-TM18H3.desktop;
-image/webp=userapp-nsxiv-NBLCI3.desktop;
+image/png=nsxiv.desktop;userapp-nsxiv-M85DI3.desktop;userapp-nsxiv-06COI3.desktop;userapp-nsxiv-8FJ7L3.desktop;
+image/jpeg=nsxiv.desktop;userapp-nsxiv-TM18H3.desktop;userapp-nsxiv-RHHJM3.desktop;
+image/webp=userapp-nsxiv-NBLCI3.desktop;userapp-nsxiv-ADS5L3.desktop;
+
+[Removed Associations]
+image/jpeg=userapp-nsxiv-5I6YL3.desktop;

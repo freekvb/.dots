@@ -15,6 +15,7 @@ WALLPAPER="$(copyq read 0)"
 echo 'wallpaper {' > $HOME/.config/hypr/hyprpaper.conf
 echo '  monitor = HDMI-A-1' >> $HOME/.config/hypr/hyprpaper.conf
 echo '  path =' "$WALLPAPER" >> $HOME/.config/hypr/hyprpaper.conf
+echo '  fit_mode = cover' >> $HOME/.config/hypr/hyprpaper.conf
 echo '}' >> $HOME/.config/hypr/hyprpaper.conf
 
 # set color theme
