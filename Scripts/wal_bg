@@ -19,10 +19,9 @@ echo '  fit_mode = cover' >> $HOME/.config/hypr/hyprpaper.conf
 echo '}' >> $HOME/.config/hypr/hyprpaper.conf
 
 # set wallpaper in 'fast'fetch
-fastfetch --logo "$WALLPAPER" --logo-type sixel --logo-width 50 --logo-height 19 --logo-padding-top 1
+fastfetch --logo "$WALLPAPER" --logo-type sixel --logo-width 50 --logo-height 18 --logo-padding-top 1
 
 # reload hyprpaper
-pkill -9 hyprpaper 2>/dev/null
-sleep 0.5
-exec hyprpaper &
+killall hyprpaper
+hyprpaper &>/dev/null & disown
 
