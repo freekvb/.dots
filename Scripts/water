@@ -1,5 +1,6 @@
 #!/bin/sh
 
 export XDG_RUNTIME_DIR="/run/user/1000"
+dunstify "And now .. you drink some water .... "
+/usr/bin/mpv --no-video --terminal=no /home/fvb/.config/sounds/water.mp3 &&
 /usr/bin/mpv --no-video --terminal=no /home/fvb/.config/sounds/water.mp3
-
