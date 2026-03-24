@@ -9,14 +9,14 @@ application/x-extension-shtml=zen.desktop
 application/xhtml+xml=zen.desktop
 application/x-extension-xhtml=zen.desktop
 application/x-extension-xht=zen.desktop
-application/pdf=org.pwmt.zathura-pdf-poppler.desktop
+application/pdf=org.pwmt.zathura.desktop
 x-scheme-handler/mpv=mpv-scheme-handler.desktop
 image/png=userapp-nsxiv-8FJ7L3.desktop
 image/jpeg=userapp-nsxiv-RHHJM3.desktop
 image/webp=userapp-nsxiv-ADS5L3.desktop
 
 [Added Associations]
-application/pdf=zen.desktop;org.pwmt.zathura-pdf-poppler.desktop;
+application/pdf=zen.desktop;org.pwmt.zathura-pdf-poppler.desktop;org.pwmt.zathura.desktop;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=org.pwmt.zathura.desktop;
 x-scheme-handler/http=zen.desktop;
 x-scheme-handler/https=zen.desktop;

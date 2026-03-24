@@ -1,11 +1,12 @@
 #-----------------------------------------------------------------------------#
 # File:     ~/.config/zsh/aliasrc  (archlinux - 'silent')
 # Date:     Thu 23 Apr 2020 12:06
-# Update:   Sun 04 Jan 2026 10:18
+# Update:   Tue 24 Mar 2026 23:07
 # Owner:    fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 #-----------------------------------------------------------------------------#
 
 
+# general
 alias ..='cd ..'                                    # cd to parent directory
 alias c='clear'
 alias cc='cd && clear'
@@ -16,19 +17,32 @@ alias lsa='ls -Al -h -G --time-style=+\ %d\ %b\ %Y\ %H:%M --color=auto --group-d
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
-alias trm='trash'
 
-alias al='bat $HOME/.config/zsh/aliasrc'            # list aliasses
-alias be='nvim $HOME/Websites/fvb/blog.html'        # new blog entry nvim
-alias calc='rofi -show calc -modi calc -no-show-match -no-sort &'   # rofi calculator
 alias df='df -h'                                    # df humancreadable
 alias diff='nvim -d'                                # diff with nvim
-alias doas='doas '                                  # doas and let it work with aliases
+alias du='du -ch'                                   # du total and human-readable
+alias grep='grep --color=auto'                      # grep color
+alias less='less -R'                                # cause of colors
+
+# config
+alias al='bat $HOME/.config/zsh/aliasrc'            # list aliasses
+alias sz='source $HOME/.config/zsh/.zshrc'          # reload zsh config (.zshrc)
+
+# dotfile
 alias dot='/usr/bin/git --git-dir=/home/fvb/.dots/ --work-tree=/home/fvb'         # bare repo
 alias dotd='dot stash && dot pull && dot stash pop'                 # download .dots repo saving local changes (small]
 alias dots='dot status'                             # .dots git status
 alias dotu='dot add -u . && dot commit -m 'update' && dot push'     # update .dots repo (silent)
-alias du='du -ch'                                   # du total and human-readable
+
+# files
+alias md='mkdir'                                    # create new directory
+alias mf='touch'                                    # create new file
+alias ms='$HOME/Scripts/mkscript'                   # create new script
+alias trm='trash'
+alias tre='trash-empty'                             # empty trash [interactive]
+alias trl='trash-list'                              # list files in trash
+
+# fzf
 alias f='fzf'                                       # fzf
 alias fcd='fcdl'                                    # fzf and cdl
 alias fch='fcdlh'                                   # fzf and cdl incl. hidden
@@ -45,43 +59,56 @@ alias fo='fopen'                                    # fzf open with xdg-open
 alias fp='fprev'                                    # fzf preview
 alias fpi='fzfub'                                   # fzf preview [images]
 alias fv='vif'                                      # fzf and open in nvim
-alias gg='cd Gemini && gemini'                      # run gemini in Gemini
-alias grep='grep --color=auto'                      # grep color
-alias grim='sleep 5 && grim'                        # screenshot in 5 [from scratchpad]
-alias hx='helix'                                    # hx for helix
-alias less='less -R'                                # cause of colors
-alias lf='$HOME/Scripts/lfub'                       # lf with previews
-alias lg='lazygit'                                  # lazygit
-alias md='mkdir'                                    # create new directory
-alias mf='touch'                                    # create new file
-alias mocp='mocp -M "$XDG_CONFIG_HOME"/moc'         # config file from .moc to .config/moc
-alias ms='$HOME/Scripts/mkscript'                   # create new script
+
+# git
+alias gt="git"
+alias ga="git add ."
+alias gs="git status -s"
+alias gc='git commit -m'
+alias glog='git log --oneline --graph --all'
+alias gh-create='gh repo create --private --source=. --remote=origin && git push -u --all && gh browse'
+
+# notes
+alias be='nvim $HOME/Websites/fvb/blog.html'        # new blog entry nvim
 alias n='notes'                                     # scratch note: 'one liners' (saved in per day dated notes_scratch)
 alias nn='vi $HOME/Notes/notes/.new_note.md'        # new note in i-mode, sn to save
 alias nq='copyq read | notes'                       # paste clipboard in scratch note
-alias nsxiv='nsxiv --no-bar'                        # no bar, toggele with [b]
+
+# pacmen
 alias paccl='doas paccache -rk 1 && doas paccache -ruk0 && pacman -Qtdq | pacman -Rns -'    # clean out pacman cache
 alias pacman='doas pacman --color=always'           # pacman color
+alias upd='pacman -Syu'                             # system upgrade
+
+# pass s
 alias pwa='pass insert -m'                          # pass add new password
 alias pwe='pass edit'                               # pass edit password
 alias pwr='pass rm'                                 # pass remove password
+
+# permissions
+alias doas='doas '                                  # doas and let it work with aliases
 alias reboot='pamixer --allow-boost --set-volume 25 && sleep 1 && doas reboot'    # adjust volume at reboot
 alias shit='doas $(fc -ln -1)'                      # last command but then with doas
-#alias sudo='doas '                                  # doas
+alias sudo='doas '                                  # doas
 alias su='su -'                                     # real root
-alias sz='source $HOME/.config/zsh/.zshrc'          # reload zsh config (.zshrc)
+
+# programs
+alias calc='rofi -show calc -modi calc -no-show-match -no-sort &'   # rofi calculator
+alias grim='sleep 5 && grim'                        # screenshot in 5 [from scratchpad]
+alias hx='helix'                                    # hx for helix
+alias lf='$HOME/Scripts/lfub'                       # lf with previews
+alias lg='lazygit'                                  # lazygit
+alias mocp='mocp -M "$XDG_CONFIG_HOME"/moc'         # config file from .moc to .config/moc
+alias nsxiv='nsxiv --no-bar'                        # no bar, toggele with [b]
 alias td='peaclock --config-dir ~/.config/peaclock'                 # time date peaclock
-alias tre='trash-empty'                             # empty trash [interactive]
-alias trl='trash-list'                              # list files in trash
 alias tt='tty-clock -c -f "%A %d %B %Y"'            # time in tmux (no flickering)
-alias upd='pacman -Syu'                             # system upgrade
+
+# nvim
 alias v='nvim' 									    # nvim
 alias vd='doas nvim'                                # nvim with root privileges
 alias vi='nvim -c startinsert'                      # start nvim in insert mode
 alias vz='nvim $HOME/.config/zsh/.zshrc'            # open zsh config (.zshrc)
-#alias yz='yazi'
 
-# suffix aliases
+# suffix
 alias -s json=jless
 alias -s md=bat
 alias -s go='$EDITOR'
