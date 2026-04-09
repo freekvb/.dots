@@ -59,6 +59,7 @@ alias fo='fopen'                                    # fzf open with xdg-open
 alias fp='fprev'                                    # fzf preview
 alias fpi='fzfub'                                   # fzf preview [images]
 alias fv='vif'                                      # fzf and open in nvim
+alias fy='ytsurf'                                   # fzf youtube
 
 # git
 alias gt="git"

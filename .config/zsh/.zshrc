@@ -44,16 +44,7 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
-#zinit light olets/command-execution-timer
 zinit light TunaCuma/zsh-vi-man
-
-# command timer settings
-#COMMAND_EXECUTION_TIMER_THRESHOLD=1
-#COMMAND_EXECUTION_TIMER_PRINT_DURATION_AFTER_COMMAND_OUTPUT=1
-#COMMAND_EXECUTION_TIMER_FOREGROUND=red
-
-# Add in snippets
-#zinit snippet OMZP::command-not-found
 
 # Load completions
 autoload -Uz compinit && compinit
