@@ -71,9 +71,7 @@ alias gh-create='gh repo create --private --source=. --remote=origin && git push
 
 # notes
 alias be='nvim $HOME/Websites/fvb/blog.html'        # new blog entry nvim
-alias n='notes'                                     # scratch note: 'one liners' (saved in per day dated notes_scratch)
 alias nn='vi $HOME/Notes/notes/.new_note.md'        # new note in i-mode, sn to save
-alias nq='copyq read | notes'                       # paste clipboard in scratch note
 
 # pacmen
 alias paccl='doas paccache -rk 1 && doas paccache -ruk0 && pacman -Qtdq | pacman -Rns -'    # clean out pacman cache

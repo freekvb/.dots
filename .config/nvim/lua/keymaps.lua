@@ -95,8 +95,10 @@ vim.keymap.set("n", "mds", ":InstantMarkdownStop<cr>")
 
 -- new note [nn] save [and quit] finished $HOME/Notes/notes/[title]
 vim.keymap.set("n", "sn", [[:w<cr>:!save_note<cr>:q<cr>]])
--- new local note [nn] save [and quit] finished $HOME/Notes/local_notes/[title]
+-- new local note [nn] save [and quit] finished $HOME/Notes/notes_local/[title]
 vim.keymap.set("n", "sl", [[:w<cr>:!save_note_local<cr>:q<cr>]])
+-- new scratch note [nn] save [and quit] finished $HOME/Notes/notes_scratch/[title]
+vim.keymap.set("n", "ss", [[:w<cr>:!save_note_scratch<cr>:q<cr>]])
 -- blog entry
 vim.keymap.set("n", "be", [[:/#<cr><cr><cr>jO<c-r>=strftime('%a %d %b %Y %H:%M')<cr><cr><cr><esc>2ko]])
 -- insert shebang

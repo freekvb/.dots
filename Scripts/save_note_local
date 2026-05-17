@@ -6,5 +6,5 @@ file=$(awk 'NR==1 {$1=""; print substr($0,2)}' "$HOME"/Notes/notes/.new_note.md)
 newfile=$HOME/Notes/notes_local/$file
 mv "$HOME"/Notes/notes/.new_note.md "$newfile".md
 
-dunstify "note local saved .."
+dunstify "local note saved .."
 

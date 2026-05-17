@@ -55,6 +55,7 @@ hl.env("XCURSOR_THEME", "Adwaita")
 hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_THEME", "Adwaita")
 
+
 ---- look and feel ------------------------------------------------------------
 
 hl.config({
@@ -247,10 +248,10 @@ hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
 
 -- move window
-hl.bind(mainMod .. " + SHIFT + left",  hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + SHIFT + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + SHIFT + up",    hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + SHIFT + down",  hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + SHIFT + left",  hl.dsp.window.move({ direction = "left" }))
+hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" }))
+hl.bind(mainMod .. " + SHIFT + up",    hl.dsp.window.move({ direction = "up" }))
+hl.bind(mainMod .. " + SHIFT + down",  hl.dsp.window.move({ direction = "down" }))
 
 -- resize window
 hl.bind(mainMod .. " + CTRL + left",  hl.dsp.window.resize({ x = -10, y = 0, relative = true}), { repeating = true })
@@ -335,7 +336,7 @@ hl.window_rule({
   },
   float = true,
   center = true,
-  size = "1230 540",
+  size = "1230 670",
 })
 
 hl.window_rule({

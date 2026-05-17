@@ -8,7 +8,7 @@
 
 # A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
 # If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
-# :schema = https://yazi-rs.github.io/schemas/keymap.json
+# :schema = https://yazi-rs.github.io/schemas/keymap.json"
 
 [mgr]
 
@@ -255,7 +255,7 @@ keymap = [
 	{ on = "x",                 run = [ "delete --cut", "move 1 --in-operating" ],          desc = "Cut current character" },
 	{ on = "y",                 run = "yank",                                               desc = "Copy selected characters" },
 	{ on = "p",                 run = "paste",                                              desc = "Paste copied characters after the cursor" },
-	{ on = "P",                 run = "paste --before",                                     desc = "Paste copied characters before the cursor" },
+	{ on = "p",                 run = "paste",                                              desc = "Paste copied characters after the cursor" },
 
 	# Undo/Redo/Casefy
 	{ on = "u",                 run = [ "undo", "casefy lower" ],                           desc = "Undo, or lowercase if in visual mode" },
