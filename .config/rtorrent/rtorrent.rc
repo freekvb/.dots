@@ -43,7 +43,7 @@ network.port_random.set = 1
 ## (conservative settings for 'private' trackers, change for 'public')
 dht.mode.set = auto
 protocol.pex.set = 1
-trackers.use_udp.set = 1
+#trackers.use_udp.set = yes
 
 ## Peer settings
 throttle.max_uploads.set = 100

@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
 -- File:    ~/.config/nvim/lua/options.lua (archlinux @ 'silent')
 -- Date:    Fri 01 Aug 2025 21:30
--- Update:  Tue 26 Aug 2025 11:23
+-- Update:  Sun 31 May 2026 00:49
 -- Owner:   fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 -------------------------------------------------------------------------------
 
@@ -11,6 +11,7 @@ vim.o.clipboard = "unnamed,unnamedplus"
 
 vim.o.number = true
 vim.o.relativenumber = true
+vim.o.signcolumn = "yes"
 vim.o.expandtab = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
@@ -20,11 +21,17 @@ vim.o.undofile = true
 vim.opt.undodir = vim.fn.stdpath('cache') .. '/undo'
 vim.o.scrolloff = 15
 vim.o.virtualedit = "all"
-vim.opt.fillchars = {eob = " "}
+vim.opt.fillchars = { eob = " " }
 
 -- split windows right/below
 vim.o.splitright = true
 vim.o.splitbelow = true
+
+-- open help in vertical split
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "help",
+	command = "wincmd L | vert resize 141",
+})
 
 -- start terminal in insert mode
 vim.cmd(
@@ -47,14 +54,27 @@ vim.cmd(
 
 -- fuzzy file finding
 vim.opt.path:append("**")
--- wildmenu
+
+-- commandline fuzzy find
 vim.o.wildmenu = true
--- auto complete like shell
-vim.o.wildmode = "longest:full,full"
--- case insensitive
+vim.opt.wildmode = "noselect"
+vim.opt.wildoptions = "pum,fuzzy"
 vim.o.wildignorecase = true
--- dash is part of word
 vim.opt.iskeyword:append("-")
+vim.api.nvim_create_autocmd("CmdlineChanged", {
+    pattern = ":",
+    callback = function()
+        vim.fn.wildtrigger()
+    end
+})
+
+-- no auto continue comments on new line
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("no_auto_comment", {}),
+	callback = function()
+		vim.opt_local.formatoptions:remove({ "c", "r", "o" })
+	end,
+})
 
 -- completion
 vim.opt.complete:append("kspell")
@@ -65,11 +85,12 @@ vim.o.pumheight = 10
 vim.o.foldmethod = "marker"
 
 -- highlight yanked text
-vim.api.nvim_create_autocmd("TextYankPost", { group = augroup,
-        callback = function()
-        vim.highlight.on_yank()
+vim.api.nvim_create_autocmd("TextYankPost", {
+    callback = function()
+        vim.hl.hl_op()
     end,
-    })
+})
+
 -- remove trailing white space
 vim.cmd(
     [[
@@ -86,8 +107,6 @@ vim.cmd(
 
 -- cursorline
 vim.o.cursorline = true
--- cursorcolumn
-vim.o.cursorcolumn = true
 
 -- cursorline disabled in insert mode
 vim.cmd(
@@ -97,6 +116,9 @@ vim.cmd(
     autocmd InsertLeave * highlight CursorLine gui=bold,italic guibg=grey3 guifg=NONE
     ]]
 )
+
+-- cursorcolumn
+vim.o.cursorcolumn = true
 
 -- cursorcolumn disabled in insert mode
 vim.cmd(
@@ -119,7 +141,7 @@ vim.g["instant_markdown_autostart"] = 0
 vim.g["instant_markdown_browser"] = "qutebrowser --target window"
 
 -- providers
-vim.g["python3_host_prog"] = "/usr/bin/python3"
+vim.g["loaded_python3_provider"] = 0
 vim.g["loaded_perl_provider"] = 0
 vim.g["loaded_node_provider"] = 0
 vim.g["loaded_ruby_provider"] = 0
@@ -133,12 +155,11 @@ vim.o.inccommand = "split"
 
 -- clear command line
 vim.api.nvim_create_autocmd("CmdlineLeave", {
-	group = “someGroup”,
-	callback = function()
-		vim.fn.timer_start(500, function()
-			print(" ")
-		end)
-	end
+    callback = function()
+        vim.fn.timer_start(500, function()
+            print(" ")
+        end)
+    end
 })
 
 -- don't trigger autocmd when executing macro
@@ -146,3 +167,17 @@ vim.cmd([[
   xnoremap @ :<C-U>execute "noautocmd '<,'>norm! " . v:count1 . "@" . getcharstr()<cr>
   nnoremap @ <cmd>execute "noautocmd norm! " . v:count1 . "@" . getcharstr()<cr>
 ]])
+
+-- lsp
+vim.lsp.enable({ "lua_ls" })
+vim.o.winborder = "single"
+
+-- lsp auto completion [C-space in insert to toggle]
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if client:supports_method('textDocument/completion') then
+            vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+        end
+    end,
+})

@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------------
 -- File:    ~/.config/nvim/lua/netrw.lua (archlinux @ 'silent')
 -- Date:    Fri 01 Aug 2025 21:30
--- Update:  Tue 26 Aug 2025 11:23
+-- Update:  Sun 31 May 2026 00:48
 -- Owner:   fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 -------------------------------------------------------------------------------
 
@@ -120,4 +120,3 @@ vim.cmd(
     augroup END
     ]]
 )
-

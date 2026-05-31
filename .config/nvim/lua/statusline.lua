@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
 -- File:    ~/.config/nvim/lua/statusline.lua (archlinux @ 'silent')
 -- Date:    Sat 09 Aug 2025 14:23
--- Update:  Tue 26 Aug 2025 11:24
+-- Update:  Sun 31 May 2026 00:50
 -- Owner:   fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 -------------------------------------------------------------------------------
 
@@ -127,4 +127,3 @@ vim.cmd(
     augroup END
     ]]
 )
-

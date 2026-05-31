@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------------
--- File:    ~/.config/nvim/lua/keymaps.lua (archlinux @ 'silent')
+-- File:    ~/.config/nvim/lua/keymaps.lua (archlinu @ 'silent')
 -- Date:    Fri 01 Aug 2025 21:30
--- Update:  Tue 26 Aug 2025 11:23
+-- Update:  Sun 31 May 2026 00:48
 -- Owner:   fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 -------------------------------------------------------------------------------
 
@@ -28,7 +28,7 @@ vim.keymap.set("n", "bd", ":bdelete<cr>")
 vim.keymap.set("n", "gb", ":ls<cr>:b<space>")
 
 -- split window [right, bottom]
-vim.keymap.set("n", "<leader>v", ":vsplit<cr>:vert resize 144<cr>:e<space>")
+vim.keymap.set("n", "<leader>v", ":vsplit<cr>:vert resize 141<cr>:e<space>")
 vim.keymap.set("n", "<leader>h", ":split<cr>")
 -- window navigation
 vim.keymap.set("n", "<c-h>", "<c-w>h")
@@ -39,7 +39,7 @@ vim.keymap.set("n", "<c-l>", "<c-w>l")
 vim.keymap.set("n", "<leader>t", ":sp<bar>res15<bar>term<cr>")
 -- terminal split rihght, resized and in insert mode
 vim.keymap.set("n", "<leader>tv", ":vsplit<bar>vert resize 144<bar>term<cr>")
--- window normal mode [terminal start in insert mode]
+-- exit terminal to normal mode window
 vim.keymap.set("t", "<esc>", "<c-\\><c-n>", {})
 
 -- tmux nvim pane navigation
@@ -49,7 +49,7 @@ vim.keymap.set("n", "<c-k>", ":TmuxNavigateUp<cr>")
 vim.keymap.set("n", "<c-l>", ":TmuxNavigateRight<cr>")
 
 -- toggle netrw
-vim.keymap.set("n", "<leader>n", ":Lexplore<cr>")
+vim.keymap.set("n", "<leader>n", ":Lexplore ~<cr>")
 -- open in working directory
 vim.keymap.set("n", "<leader>nd", ":Lexplore %:p:h<cr>")
 
@@ -74,16 +74,21 @@ vim.keymap.set("n", "<space><space>", [[:%s/\<<c-r>=expand('<cword>')<cr>\>/]])
 -- search and replace all instances given term
 vim.keymap.set("n", "<leader>sr", [[:%s//gI<Left><Left><Left>]])
 -- clear highlighting from the search
-vim.keymap.set("n", "<esc>", ":nohlsearch<cr>", {silent = true})
+vim.keymap.set("n", "<esc>", ":nohlsearch<cr>", { silent = true })
 
 -- toggle spell checking
 vim.keymap.set("n", "<leader>s", ":setlocal spell! spelllang=en_us,nl<cr>")
--- corect mis spell
+-- correct mis spell
 vim.keymap.set("n", "<leader>c", "li<C-x>s")
 -- next mis spell
 vim.keymap.set("n", "<n>", "]s")
 
--- toggle auto completion
+-- lsp format
+vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
+-- toggle lsp autocompletion
+vim.keymap.set("i", "C-<space>", vim.lsp.completion.get)
+
+-- toggle omni auto completion
 vim.keymap.set("n", "<leader>a", ":set invac<cr>")
 
 -- easy folding
@@ -106,4 +111,3 @@ vim.keymap.set("n", "sb", [[i#!/bin/sh<cr><cr>]])
 
 -- header update
 vim.keymap.set("n", "<leader>u", [[gg/Update<cr>2wc$<c-r>=strftime('%a %d %b %Y %H:%M')<cr><esc>03j:nohlsearch<cr>]])
-
