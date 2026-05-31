@@ -68,3 +68,17 @@ require("smear_cursor").setup(
         distance_stop_animating = 0.5         -- 0.1      > 0
     }
 )
+
+-- lsp
+vim.lsp.enable({ "lua_ls" })
+vim.o.winborder = "single"
+
+-- lsp auto completion [C-space in insert to toggle]
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if client:supports_method('textDocument/completion') then
+            vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+        end
+    end,
+})
