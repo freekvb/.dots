@@ -1,0 +1,7 @@
+#!/bin/sh
+
+dir=$(pwd)
+
+cd $HOME/Notes/notes_scratch && fzf
+
+cd "$dir" || exit
