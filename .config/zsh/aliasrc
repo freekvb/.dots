@@ -52,12 +52,13 @@ alias fh='hst'                                      # fzf term command history >
 alias fhx='fhx'                                     # fzf term command history execute
 alias fin='cd $HOME/Notes/notes && fifo'            # fzf given string in notes
 alias fins='cd $HOME/Notes/notes_scratch && fifo'   # fzf given string in notes_scratch
-alias fn='cd $HOME/Notes/notes && fzf'              # fzf notes
+alias fn='cd $HOME/Notes/notes && nvim "$fzf"'      # fzf notes
 alias fk='fkill'                                    # fzf and kill proces
 alias fm='macho'                                    # fzf man pages
 alias fo='fopen'                                    # fzf open with xdg-open
 alias fp='fprev'                                    # fzf preview
 alias fpi='fzfub'                                   # fzf preview [images]
+alias fs='cd $HOME/Notes/notes_scratch && nvim "$fzf"'              # fzf notes_scratch
 alias fv='vif'                                      # fzf and open in nvim
 alias fy='ytsurf'                                   # fzf youtube
 
