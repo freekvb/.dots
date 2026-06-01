@@ -94,31 +94,15 @@ alias su='su -'                                     # real root
 # programs
 alias calc='rofi -show calc -modi calc -no-show-match -no-sort &'   # rofi calculator
 alias grim='sleep 5 && grim'                        # screenshot in 5 [from scratchpad]
-alias hx='helix'                                    # hx for helix
 alias lf='$HOME/Scripts/lfub'                       # lf with previews
 alias lg='lazygit'                                  # lazygit
 alias mocp='mocp -M "$XDG_CONFIG_HOME"/moc'         # config file from .moc to .config/moc
 alias nsxiv='nsxiv --no-bar'                        # no bar, toggele with [b]
-alias rg='rg --hidden'
 alias td='peaclock --config-dir ~/.config/peaclock'                 # time date peaclock
-alias tt='tty-clock -c -f "%A %d %B %Y"'            # time in tmux (no flickering)
 
 # nvim
 alias v='nvim' 									    # nvim
 alias vd='doas nvim'                                # nvim with root privileges
 alias vi='nvim -c startinsert'                      # start nvim in insert mode
 alias vz='nvim $HOME/.config/zsh/.zshrc'            # open zsh config (.zshrc)
-
-# suffix
-alias -s json=jless
-alias -s md=bat
-alias -s go='$EDITOR'
-alias -s rs='$EDITOR'
-alias -s txt=bat
-alias -s log=bat
-alias -s py='$EDITOR'
-alias -s js='$EDITOR'
-alias -s ts='$EDITOR'
-alias -s html='$EDITOR'
-
 
