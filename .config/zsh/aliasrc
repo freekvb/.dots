@@ -99,6 +99,7 @@ alias lf='$HOME/Scripts/lfub'                       # lf with previews
 alias lg='lazygit'                                  # lazygit
 alias mocp='mocp -M "$XDG_CONFIG_HOME"/moc'         # config file from .moc to .config/moc
 alias nsxiv='nsxiv --no-bar'                        # no bar, toggele with [b]
+alias rg='rg --hidden'
 alias td='peaclock --config-dir ~/.config/peaclock'                 # time date peaclock
 alias tt='tty-clock -c -f "%A %d %B %Y"'            # time in tmux (no flickering)
 

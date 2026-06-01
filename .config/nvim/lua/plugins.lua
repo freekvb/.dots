@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------------
 -- File:    ~/.config/nvim/lua/plugins.lua (archlinux @ 'silent')
 -- Date:    Fri 01 Aug 2025 21:30
--- Update:  Sun 31 May 2026 00:50
+-- Update:  Mon 01 Jun 2026 14:11
 -- Owner:   fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 -------------------------------------------------------------------------------
 
@@ -12,11 +12,12 @@ vim.pack.add(
         { src = "file:///home/fvb/.fzf" },
         { src = "https://github.com/metalelf0/black-metal-theme-neovim" },
         { src = "https://github.com/instant-markdown/vim-instant-markdown" },
-        { src = "https://github.com/echasnovski/mini.starter" },
-        -- { src = "https://github.com/uZer/pywal16.nvim", as = "pywal16" },
+        { src = "https://github.com/nvim-mini/mini.starter" },
+        { src = "https://github.com/nvim-mini/mini.pairs" },
         { src = "https://github.com/sphamba/smear-cursor.nvim" },
         { src = "https://github.com/christoomey/vim-tmux-navigator" },
-        { src = "https://github.com/neovim/nvim-lspconfig" }
+        { src = "https://github.com/neovim/nvim-lspconfig" },
+        { src = "https://github.com/folke/trouble.nvim" },
     }
 )
 
@@ -31,10 +32,6 @@ require("black-metal").setup(
 )
 require("black-metal").load()
 
----- pywal16
---local pywal16 = require('pywal16')
---pywal16.setup()
-
 -- mini starter
 require("mini.starter").setup(
     {
@@ -48,6 +45,8 @@ require("mini.starter").setup(
         silent = false
     }
 )
+-- mini pairs
+require("mini.pairs").setup()
 
 -- smear cursor
 require("smear_cursor").setup(
@@ -71,6 +70,7 @@ require("smear_cursor").setup(
 
 -- lsp
 vim.lsp.enable({ "lua_ls" })
+-- lsp hover [shift-kk]
 vim.o.winborder = "single"
 
 -- lsp auto completion [C-space in insert to toggle]
@@ -82,3 +82,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end
     end,
 })
+
+-- trouble diagnostics
+require("trouble").setup()
+

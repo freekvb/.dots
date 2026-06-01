@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
 -- File:    ~/.config/nvim/lua/options.lua (archlinux @ 'silent')
 -- Date:    Fri 01 Aug 2025 21:30
--- Update:  Sun 31 May 2026 00:49
+-- Update:  Mon 01 Jun 2026 14:09
 -- Owner:   fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 -------------------------------------------------------------------------------
 
@@ -23,7 +23,7 @@ vim.o.scrolloff = 15
 vim.o.virtualedit = "all"
 vim.opt.fillchars = { eob = " " }
 
--- split windows right/below
+-- split right/below
 vim.o.splitright = true
 vim.o.splitbelow = true
 
@@ -167,18 +167,4 @@ vim.cmd([[
   xnoremap @ :<C-U>execute "noautocmd '<,'>norm! " . v:count1 . "@" . getcharstr()<cr>
   nnoremap @ <cmd>execute "noautocmd norm! " . v:count1 . "@" . getcharstr()<cr>
 ]])
-
--- lsp
-vim.lsp.enable({ "lua_ls" })
-vim.o.winborder = "single"
-
--- lsp auto completion [C-space in insert to toggle]
-vim.api.nvim_create_autocmd('LspAttach', {
-    callback = function(ev)
-        local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        if client:supports_method('textDocument/completion') then
-            vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-        end
-    end,
-})
 

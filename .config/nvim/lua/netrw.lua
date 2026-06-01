@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------------
 -- File:    ~/.config/nvim/lua/netrw.lua (archlinux @ 'silent')
 -- Date:    Fri 01 Aug 2025 21:30
--- Update:  Sun 31 May 2026 00:48
+-- Update:  Mon 01 Jun 2026 13:53
 -- Owner:   fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 -------------------------------------------------------------------------------
 
@@ -18,7 +18,7 @@ vim.g.netrw_use_errorwindow = 1
 vim.g.netrw_bufsettings = "noma nomod nu rnu nobl nowrap ro"
 vim.g.netrw_bookmark = 1
 
--- open split to the right
+-- split right
 vim.cmd(
     [[
     function! OpenToRight()
@@ -30,7 +30,7 @@ vim.cmd(
     endfunction
     ]]
 )
--- open split below
+-- split below
 vim.cmd(
     [[
     function! OpenBelow()
@@ -120,3 +120,4 @@ vim.cmd(
     augroup END
     ]]
 )
+
