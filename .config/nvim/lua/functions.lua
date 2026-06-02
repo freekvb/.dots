@@ -69,3 +69,11 @@ vim.cmd(
 	augroup END
 	]]
 )
+
+-- close hidden buffer
+vim.cmd(
+    [[
+    autocmd FileType netrw setl bufhidden=delete
+    ]]
+)
+

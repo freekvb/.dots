@@ -23,12 +23,18 @@ vim.o.scrolloff = 15
 vim.o.virtualedit = "all"
 vim.opt.fillchars = { eob = " " }
 vim.o.foldmethod = "marker"
+vim.o.winborder = "single"
 
 vim.o.undofile = true
 vim.opt.undodir = vim.fn.stdpath('cache') .. '/undo'
 
 vim.o.splitright = true
 vim.o.splitbelow = true
+
+-- completion
+vim.opt.complete:append("kspell")
+vim.opt.completeopt = "menuone,noselect,longest,fuzzy"
+vim.o.pumheight = 10
 
 -- netrw
 vim.g.netrw_keepdir = 0
@@ -39,3 +45,4 @@ vim.g.netrw_liststyle = 4
 -- instant markdown
 vim.g["instant_markdown_autostart"] = 0
 vim.g["instant_markdown_browser"] = "qutebrowser --target window"
+

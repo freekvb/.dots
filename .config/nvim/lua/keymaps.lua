@@ -19,6 +19,13 @@ vim.keymap.set("n", "<leader>wq", ":wq<cr>")
 vim.keymap.set("n", "q", "<nop>")
 vim.keymap.set("n", "Q", "q")
 
+-- navigate buffers
+vim.keymap.set("n", "bl", ":ls<cr>")
+vim.keymap.set("n", "bn", ":bnext<cr>")
+vim.keymap.set("n", "bp", ":bprevious<cr>")
+vim.keymap.set("n", "bd", ":bdelete<cr>")
+vim.keymap.set("n", "gb", ":ls<cr>:b<space>")
+
 -- splits [right, bottom]
 vim.keymap.set("n", "<leader>v", ":vsplit<cr>:vert resize 141<cr>:e<space>")
 vim.keymap.set("n", "<leader>h", ":split<cr>")
@@ -31,8 +38,9 @@ vim.keymap.set("n", "<c-l>", "<c-w>l")
 
 -- toggle netrw
 vim.keymap.set("n", "<leader>n", ":Lexplore <cr>")
--- open in working directory
-vim.keymap.set("n", "<leader>nd", ":Lexplore %:p:h<cr>")
+
+-- toggle omni autocompletion
+vim.keymap.set("n", "<leader>a", ":set invac<cr>")
 
 -- fuzzy find [fzf]
 vim.keymap.set("n", "<leader>f", ":FZF --no-border ~<cr>")
@@ -62,3 +70,4 @@ vim.keymap.set("n", "sb", [[i#!/bin/sh<cr><cr>]])
 
 -- header update
 vim.keymap.set("n", "<leader>u", [[gg/Update<cr>2wc$<c-r>=strftime('%a %d %b %Y %H:%M')<cr><esc>03j:nohlsearch<cr>]])
+
