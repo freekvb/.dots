@@ -41,6 +41,7 @@ vim.g.netrw_keepdir = 0
 vim.g.netrw_winsize = -62
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 4
+vim.g.netrw_bufsettings = "noma nomod nu rnu nobl nowrap ro"
 
 -- instant markdown
 vim.g["instant_markdown_autostart"] = 0
