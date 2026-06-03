@@ -23,8 +23,8 @@ vim.o.scrolloff = 15
 vim.o.virtualedit = "all"
 vim.opt.fillchars = { eob = " " }
 vim.o.foldmethod = "marker"
-vim.o.winborder = "single"
 
+vim.o.swapfile = false
 vim.o.undofile = true
 vim.opt.undodir = vim.fn.stdpath('cache') .. '/undo'
 

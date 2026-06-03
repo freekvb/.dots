@@ -8,12 +8,6 @@
 
 -- functions
 
--- open help in vertical split
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "help",
-    command = "wincmd L | vert resize 141",
-})
-
 -- clear command line
 vim.api.nvim_create_autocmd("CmdlineLeave", {
     callback = function()
@@ -21,6 +15,16 @@ vim.api.nvim_create_autocmd("CmdlineLeave", {
             print(" ")
         end)
     end
+})
+
+-- stop automatic commentings
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "*",
+    callback = function()
+        vim.opt.formatoptions:remove({ "c", "r", "o" })
+    end,
+    group = general,
+    desc = "Disable automatic comment continuation",
 })
 
 -- highlight yanked text
@@ -62,6 +66,14 @@ vim.cmd(
        	nmap <buffer> <c-l> <c-w>l
   		nmap <buffer> h u
   		nmap <buffer> l <cr>
+        nmap <buffer> <space> mf
+        nmap <buffer> <Leader><space> mu
+        nmap <buffer> nf %:w<CR>:buffer #<CR>
+        nmap <buffer> nd d
+        nmap <buffer> cw R
+        nmap <buffer> pc mtmc
+        nmap <buffer> pm mtmm
+        nmap <buffer> ! mx
 	endfunction
 	augroup netrw_mapping
   		autocmd!
@@ -77,3 +89,9 @@ vim.cmd(
     ]]
 )
 
+-- close netrw if it's the only buffer open
+vim.cmd(
+    [[
+    autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), '&filetype') == 'netrw' || &buftype == 'quickfix' |q|endif
+    ]]
+)

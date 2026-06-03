@@ -15,6 +15,9 @@ vim.keymap.set("n", "<leader>w", ":write<cr>")
 vim.keymap.set("n", "<leader>q", ":quit<cr>")
 vim.keymap.set("n", "<leader>wq", ":wq<cr>")
 
+-- update and source
+vim.keymap.set("n", "<leader>s", ":update<cr> :source<cr>")
+
 -- prevent accidentally record functionality
 vim.keymap.set("n", "q", "<nop>")
 vim.keymap.set("n", "Q", "q")
@@ -24,7 +27,7 @@ vim.keymap.set("n", "bl", ":ls<cr>")
 vim.keymap.set("n", "bn", ":bnext<cr>")
 vim.keymap.set("n", "bp", ":bprevious<cr>")
 vim.keymap.set("n", "bd", ":bdelete<cr>")
-vim.keymap.set("n", "gb", ":ls<cr>:b<space>")
+vim.keymap.set("n", "bo", ":ls<cr>:b<space>")
 
 -- splits [right, bottom]
 vim.keymap.set("n", "<leader>v", ":vsplit<cr>:vert resize 141<cr>:e<space>")
@@ -37,7 +40,8 @@ vim.keymap.set("n", "<c-k>", "<c-w>k")
 vim.keymap.set("n", "<c-l>", "<c-w>l")
 
 -- toggle netrw
-vim.keymap.set("n", "<leader>n", ":Lexplore <cr>")
+vim.keymap.set("n", "<leader>n", ":Lexplore<cr>")
+vim.keymap.set("n", "<leader>nh", ":Lexplore ~ <cr>")
 
 -- toggle omni autocompletion
 vim.keymap.set("n", "<leader>a", ":set invac<cr>")
@@ -49,6 +53,8 @@ vim.keymap.set("n", "<leader>fd", ":FZF --no-border %:p:h<cr>")
 
 -- search and replace word under cursor
 vim.keymap.set("n", "<space><space>", [[:%s/\<<c-r>=expand('<cword>')<cr>\>/]])
+-- clear highlighting from the search
+vim.keymap.set("n", "<esc>", ":nohlsearch<cr>", { silent = true })
 
 -- easy folding
 vim.keymap.set("n", "z", "za<space>0")

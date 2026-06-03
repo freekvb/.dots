@@ -46,7 +46,6 @@ alias trl='trash-list'                              # list files in trash
 alias f='fzf'                                       # fzf
 alias fcd='fcdl'                                    # fzf and cdl
 alias fch='fcdlh'                                   # fzf and cdl incl. hidden
-alias fe='fexec'                                    # fzf and execute pac_installed program
 alias ff='fifo'                                     # fzf given string in files
 alias fh='hst'                                      # fzf term command history > clipboard
 alias fhx='fhx'                                     # fzf term command history execute
@@ -101,6 +100,7 @@ alias nsxiv='nsxiv --no-bar'                        # no bar, toggele with [b]
 alias td='peaclock --config-dir ~/.config/peaclock'                 # time date peaclock
 
 # nvim
+alias nv='NVIM_APPNAME=neovim nvim'                 # neovim [nvim old long config]
 alias v='nvim' 									    # nvim
 alias vd='doas nvim'                                # nvim with root privileges
 alias vi='nvim -c startinsert'                      # start nvim in insert mode

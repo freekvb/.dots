@@ -64,11 +64,6 @@ fcdlh() {
     devar; return 0
 }
 
-# fe - fzf execute pac_installed program
-fexec() {
-    $(bat $HOME/Notes/pac_installed.md | fzf --prompt "exec: ")
-}
-
 # ff - find given string in files, open in nvim and go to 1st search result
 fif() {
 	if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
