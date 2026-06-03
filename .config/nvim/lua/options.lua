@@ -34,7 +34,8 @@ vim.o.splitbelow = true
 -- completion
 vim.opt.complete:append("kspell")
 vim.opt.completeopt = "menuone,noselect,longest,fuzzy"
-vim.o.pumheight = 10
+vim.o.pumheight = 5
+vim.o.pumborder = "single"
 
 -- netrw
 vim.g.netrw_keepdir = 0

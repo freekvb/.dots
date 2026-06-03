@@ -50,7 +50,7 @@ vim.keymap.set("n", "<leader>a", ":set invac<cr>")
 vim.keymap.set("n", "<leader>f", ":FZF --no-border ~<cr>")
 -- fzf in working directory
 vim.keymap.set("n", "<leader>fd", ":FZF --no-border %:p:h<cr>")
-
+ 
 -- search and replace word under cursor
 vim.keymap.set("n", "<space><space>", [[:%s/\<<c-r>=expand('<cword>')<cr>\>/]])
 -- clear highlighting from the search

@@ -14,6 +14,7 @@ vim.pack.add({
     { src = "https://github.com/instant-markdown/vim-instant-markdown" },
     { src = "https://github.com/nvim-mini/mini.pairs" },
     { src = "https://github.com/nvim-mini/mini.statusline" },
+    { src = "https://github.com/sphamba/smear-cursor.nvim" },
 })
 
 -- black metal colortheme
@@ -26,3 +27,6 @@ require("black-metal").load()
 -- nvim mini
 require("mini.pairs").setup()
 require('mini.statusline').setup()
+
+-- smear cursor
+require("smear_cursor").setup()

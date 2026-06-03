@@ -95,3 +95,4 @@ vim.cmd(
     autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), '&filetype') == 'netrw' || &buftype == 'quickfix' |q|endif
     ]]
 )
+
