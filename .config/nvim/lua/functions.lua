@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------------
 -- File:    ~/.config/nvim/lua/functions.lua (archlinu @ 'silent')
 -- Date:    Mon 01 Jun 2026 19:30
--- Update:  Mon 01 Jun 2026 21:14
+-- Update:  Thu 04 Jun 2026 08:08
 -- Owner:   fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 -------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
-        vim.hl.hl_op()
+        vim.hl.hl_op({higroup = 'Visual', timeout = 200})
     end,
 })
 
@@ -46,53 +46,69 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 })
 
 -- automatically leave insert mode
-vim.cmd(
-    [[
-    au CursorHoldI * stopinsert
-    ]]
-)
+vim.api.nvim_create_autocmd({ 'CursorHoldI' }, {
+    pattern = '*',
+    command = 'stopinsert',
+})
 -- set 5 seconds for insert mode
-vim.cmd(
-    [[
-    au InsertEnter * let updaterestore=&updatetime | set updatetime=5000
-    au InsertLeave * let &updatetime=updaterestore
-    ]]
-)
+vim.api.nvim_create_autocmd({ 'InsertEnter' }, {
+    pattern = '*',
+    command = 'let updaterestore=&updatetime | set updatetime=5000'
+})
+vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
+    pattern = '*',
+    command = 'let &updatetime=updaterestore'
+})
 
 -- netrw keymap function
-vim.cmd(
-    [[
-	function! NetrwMapping()
-       	nmap <buffer> <c-l> <c-w>l
-  		nmap <buffer> h u
-  		nmap <buffer> l <cr>
-        nmap <buffer> <space> mf
-        nmap <buffer> <Leader><space> mu
-        nmap <buffer> nf %:w<CR>:buffer #<CR>
-        nmap <buffer> nd d
-        nmap <buffer> cw R
-        nmap <buffer> pc mtmc
-        nmap <buffer> pm mtmm
-        nmap <buffer> ! mx
-	endfunction
-	augroup netrw_mapping
-  		autocmd!
-  		autocmd filetype netrw call NetrwMapping()
-	augroup END
-	]]
-)
+vim.api.nvim_create_autocmd('filetype', {
+    pattern = 'netrw',
+    desc = 'Better mappings for netrw',
+    callback = function()
+        local bind = function(lhs, rhs)
+            vim.keymap.set('n', lhs, rhs, {remap = true, buffer = true})
+        end
+        bind('<c-l>', '<c-w>l')
+        bind('h', 'u')
+        bind('l', '<cr>')
+        bind('<space>', 'mf')
+        bind('<leader><space>', 'mu')
+        bind('nf', '%:w<cr>:buffer #<cr>')
+        bind('nd', 'd')
+        bind('cw', 'R')
+        bind('pc', 'mtmc')
+        bind('pm', 'mtmm')
+        bind('!', 'mx')
+    end
+})
 
 -- close hidden buffer
-vim.cmd(
-    [[
-    autocmd FileType netrw setl bufhidden=delete
-    ]]
-)
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+    pattern = 'netrw',
+    command = 'set bufhidden=delete'
+})
 
 -- close netrw if it's the only buffer open
-vim.cmd(
-    [[
-    autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), '&filetype') == 'netrw' || &buftype == 'quickfix' |q|endif
-    ]]
-)
+vim.api.nvim_create_autocmd({ 'WinEnter' }, {
+    pattern = '*',
+    command = "if winnr('$') == 1 && getbufvar(winbufnr(winnr()), '&filetype') == 'netrw' || &buftype == 'quickfix' |q|endif"
+})
+
+-- no dubble netrw buffers
+vim.g.NetrwIsOpen = 0
+local function toggle_netrw()
+    if vim.g.NetrwIsOpen then
+        -- Iterate over all current buffers
+        for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+            if vim.api.nvim_buf_get_option(buf, 'filetype') == 'netrw' then
+                -- Forcefully wipe the netrw buffer
+                vim.api.nvim_buf_delete(buf, { force = true })
+            end
+        end
+        vim.g.NetrwIsOpen = 0
+    else
+        vim.g.NetrwIsOpen = 1
+        vim.cmd('Lexplore')
+    end
+end
 

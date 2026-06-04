@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------------
 -- File:    ~/.config/nvim/lua/plugins.lua (archlinu @ 'silent')
 -- Date:    Mon 01 Jun 2026 20:10
--- Update:  Mon 01 Jun 2026 21:19
+-- Update:  Thu 04 Jun 2026 08:09
 -- Owner:   fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 -------------------------------------------------------------------------------
 

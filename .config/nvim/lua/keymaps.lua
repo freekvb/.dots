@@ -40,8 +40,8 @@ vim.keymap.set("n", "<c-k>", "<c-w>k")
 vim.keymap.set("n", "<c-l>", "<c-w>l")
 
 -- toggle netrw
-vim.keymap.set("n", "<leader>n", ":Lexplore<cr>")
-vim.keymap.set("n", "<leader>nh", ":Lexplore ~ <cr>")
+vim.keymap.set("n", "<leader>nn", ":Lexplore<cr>")
+vim.keymap.set("n", "<leader>nd", ":Lexplore %:p:h<cr>")
 
 -- toggle omni autocompletion
 vim.keymap.set("n", "<leader>a", ":set invac<cr>")
