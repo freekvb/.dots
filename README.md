@@ -23,7 +23,7 @@ A new arch install deserves new .dotfiles so I created new .dotfiles (based on m
 * shell:            [**zsh**](https://www.zsh.org "zsh")
 * terminal:         [**foot**](https://codeberg.org/dnkl/foot "foot")
 * editor:           [**neovim**](https://neovim.io/ "neovim")
-* filemanager:      [**lf**](https://github.com/gokcehan/lf "lf")
+* filemanager:      [**yazi**](https://github.com/sxyazi/yazi "yazi")
 * webbrowser:       [**zen-browser**](https://zen-browser.app/ "zen-browser")
 * cli_webbrowser:   [**lynx**](https://lynx.invisible-island.net/current/index.html "lynx")
 * git interface:    [**lazygit**](https://github.com/jesseduffield/lazygit/ "lazygit")
