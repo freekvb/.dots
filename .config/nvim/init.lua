@@ -22,6 +22,8 @@ require('functions')
 
 require('keymaps')
 
+require('netrw')
+
 require('options')
 
 require('plugins')

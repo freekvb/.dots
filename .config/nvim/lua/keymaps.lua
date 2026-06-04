@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------------
 -- File:    ~/.config/nvim/lua/keymaps.lua (archlinu @ 'silent')
 -- Date:    Mon 01 Jun 2026 19:00
--- Update:  Mon 01 Jun 2026 21:12
+-- Update:  Thu 04 Jun 2026 15:54
 -- Owner:   fvb - freekvb@gmail.com - https://freekvb.github.io/fvb/
 -------------------------------------------------------------------------------
 
@@ -26,7 +26,7 @@ vim.keymap.set("n", "Q", "q")
 vim.keymap.set("n", "bl", ":ls<cr>")
 vim.keymap.set("n", "bn", ":bnext<cr>")
 vim.keymap.set("n", "bp", ":bprevious<cr>")
-vim.keymap.set("n", "bd", ":bdelete<cr>")
+vim.keymap.set("n", "bq", ":bdelete<cr>")
 vim.keymap.set("n", "bo", ":ls<cr>:b<space>")
 
 -- splits [right, bottom]
