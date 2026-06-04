@@ -7,7 +7,7 @@
 #### New Arch new dotfiles
 
 Installed arch linux as default to boot system on my main machine 'silent'
-A new arch install deserves new .dotfiles so I created new .dotfiles (based on my old .dotfiles of course)
+A new arch install deserves new .dotfiles so I created .dots (based on my old .dotfiles of course)
 
 ### Desktop PC 'silent'
 
