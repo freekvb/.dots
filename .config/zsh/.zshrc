@@ -47,7 +47,12 @@ zinit light Aloxaf/fzf-tab
 zinit light TunaCuma/zsh-vi-man
 
 # Load completions
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+if [[ -n ~/.zcompdump(#qNmh-24) ]]; then
+  compinit -C
+else
+  compinit
+fi
 
 zinit cdreplay -q
 

@@ -198,7 +198,7 @@ hl.bind(mainMod .. " + f", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + q", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 
 -- programs
-hl.bind("SUPER + b", hl.dsp.exec_cmd("brave"))
+hl.bind("SUPER + b", hl.dsp.exec_cmd("brave-origin"))
 hl.bind("SUPER + z", hl.dsp.exec_cmd("zen-browser"))
 hl.bind(mainMod .. " + r", hl.dsp.exec_cmd("moc_radio"))
 hl.bind(mainMod .. " + v", hl.dsp.exec_cmd("mpv_cq"))
@@ -282,6 +282,12 @@ end
 hl.bind(mainMod .. " + s",         hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + s", hl.dsp.window.move({ workspace = "special:magic" }))
 
+--hl.bind(mainMod .. " + s", function()
+--hl.dispatch(hl.dsp.window.float())
+--hl.dispatch(hl.dsp.window.resize({ x = 1280, y = 540 }))
+--hl.dispatch(hl.dsp.window.center())
+--end) 
+
 -- scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
@@ -296,6 +302,14 @@ local suppressMaximizeRule = hl.window_rule({
     suppress_event = "maximize",
 })
 
+hl.window_rule({
+  name = "ignore maximize",
+  match = {
+    class = ".*"
+  },
+  suppress_event = "maximize",
+})
+
 -- fix dragging issues
 hl.window_rule({
     name  = "fix-xwayland-drags",
@@ -308,14 +322,6 @@ hl.window_rule({
         pin        = false,
     },
     no_focus = true,
-})
-
-hl.window_rule({
-  name = "ignore maximize",
-  match = {
-    class = ".*"
-  },
-  suppress_event = "maximize",
 })
 
 hl.window_rule({
@@ -362,7 +368,7 @@ hl.window_rule({
 hl.window_rule({
   name = "brave",
   match = {
-    class = "brave-browser"
+    class = "brave-origin"
   },
   opacity = "1.0 override 0.9 override",
 })

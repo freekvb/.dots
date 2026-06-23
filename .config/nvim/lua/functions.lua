@@ -34,6 +34,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
+-- start terminal in insert mode
+vim.api.nvim_create_autocmd({ 'TermOpen' }, {
+    pattern = '*',
+    command = 'startinsert'
+})
+
 -- return to last edit position at opening file
 vim.api.nvim_create_autocmd('BufReadPost', {
     callback = function(args)
